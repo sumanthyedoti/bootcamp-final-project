@@ -1,0 +1,4 @@
+server/node_modules
+server/.esLintrc.js
+client/node_modules
+client/.esLintrc.js
