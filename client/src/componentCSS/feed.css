@@ -1,0 +1,70 @@
+.post-feed{
+  margin-top: 40px;
+  background-color: #fff;
+}
+.feed-item{
+  background-color: #fff;
+  min-height: 80px;
+  clear: both;
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px 0px hsl(0, 0%, 70%);
+}
+.post-by, .commented-by{
+  font-weight: bold;
+  font-size: 16px;
+  color: rgb(72, 62, 155);
+  cursor: pointer;
+  padding-right: 6px;
+}
+.posted-at, .commented-at{
+  font-size: 12px;
+  color: gray;
+  margin-left: 10px;
+}
+.item-text{
+  font-size: 16px;
+  margin: 10px 0px;
+}
+.only-text{
+  font-size: 24px;
+}
+.item-image{
+  width: 100%;
+  max-height: 120vh;
+}
+.item-props{
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+.item-options{
+  position: relative;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.likes{
+  position: relative;
+  left: 0px;
+}
+.likes, .comments{
+  font-size: 14px;
+  color: gray;
+}
+.comments{
+  position: absolute;
+  right: 10px;
+}
+.like-button, .comment-button, .share-button{
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: gray;
+  cursor: pointer;
+}
+.post-liked{
+  color: hsl(220, 50%, 50%);
+}
