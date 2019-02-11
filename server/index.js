@@ -15,8 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use("/",route.userDetail)
-app.use('/auth/',route.Post);
-app.use("/",route.FileUpload);
+app.use('/',route.Post);
+app.use("/",route.Oraganization);
+// app.use("/",route.FileUpload);
+
 
 
 
