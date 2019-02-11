@@ -12,7 +12,7 @@ var userDetail = mongoose.model('userDetail', new Schema({
             validator(Name){
              return /^[a-zA-Z ]{3,30}$/.test(Name)
             },
-            message:"name is incoreect formate"
+            message:"name is incorrect format"
         }
     },
     Username: {
@@ -24,9 +24,9 @@ var userDetail = mongoose.model('userDetail', new Schema({
         required: true,
         validate:{
             validator(Name){
-                return /^[a-z0-9_]{3,30}$/.test(Name)
+                return /^[a-z0-9A-Z_]{3,30}$/.test(Name)
                },
-               message:"name is incoreect formate"
+               message:"username is incorrect format"
         }
     },
     email: {

@@ -1,14 +1,14 @@
-.header{
+.header {
   width: 100%;
   min-height: 60px;
   background: hsl(210, 25%, 30%);
 }
-.header-container{
+.header-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.logo__title{
+.logo__title {
   font-size: 40px;
   line-height: 50px;
   color: whitesmoke;
@@ -17,33 +17,28 @@
   display: inline-block;
   border-bottom: 2px solid white;
 }
-#work-icon{
+#work-icon {
   width: 40px;
   height: 44px;
   filter: brightness(320%);
   padding: 2px;
   transform: translateY(6px);
-
 }
-.nav-div{
+.nav-div {
   width: 100%;
   flex-shrink: 0;
   display: inline-block;
-  
 }
-.nav-icons{
+.nav-icons {
   display: flex;
-  justify-content: space-around
-
+  justify-content: space-around;
 }
 
-@media (min-width: 768px){
-  .nav-div{
+@media (min-width: 768px) {
+  .nav-div {
     width: 300px;
-    
   }
-  .header-container{
+  .header-container {
     justify-content: space-between;
   }
-  
 }

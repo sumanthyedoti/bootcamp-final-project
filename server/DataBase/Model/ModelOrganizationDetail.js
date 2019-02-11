@@ -25,7 +25,7 @@ var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
             validator(Name){
                 return /^[a-z_]{3,30}$/.test(Name)
                },
-               message:"name is incoreect formate"
+               message:"name is incorrect formate"
         }
     },
     Address: {

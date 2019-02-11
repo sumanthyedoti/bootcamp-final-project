@@ -18,6 +18,7 @@ const styles = {
   postButton: {
     margin: '4px',
     float: 'right',
+    "border-radius":"2px",
     backgroundColor: 'hsl(218, 59%, 44%)'
   }
 }
