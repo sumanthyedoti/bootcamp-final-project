@@ -1,0 +1,42 @@
+.signin-text-form {
+  text-align: center;
+  border: 1px solid hsl(210, 25%, 30%);
+  height:  calc(100vh - 160px );
+  margin-left: 9px;
+  margin-right: 9px;
+}
+.signin-text-fields {
+  box-shadow: 4px 4px 16px 0px hsl(220, 60%, 20%);
+  max-width: 580px;
+  min-width: 350px;
+  margin: 0 auto;
+  background: whitesmoke;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding: 20px;
+}
+.MuiFilledInput-underline-27:after {
+  border-bottom: 2px solid hsl(210, 25%, 30%) !important ;
+}
+.MuiFormLabel-root-19.MuiFormLabel-focused-20 {
+  color: hsl(210, 25%, 30%) !important;
+  font-weight: bolder;
+}
+.buttons {
+  text-align: right;
+  margin-top: 20px;
+}
+h2{
+    float: right;
+    width: 26%;
+    font-weight: 100;
+    font-size: 18px;
+    margin-top: 12px;
+    color: grey;
+}
+
+.gender-date{
+  display: flex;
+  justify-content: space-between;
+  /* width:100% */
+}

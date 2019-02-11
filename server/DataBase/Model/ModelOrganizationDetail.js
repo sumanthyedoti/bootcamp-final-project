@@ -23,12 +23,16 @@ var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
         maxlength:15,
         validate:{
             validator(Name){
-                return /^[a-z_]{3,30}$/.test(Name)
+                return /^[a-zA-Z0-9_]{3,30}$/.test(Name)
                },
-               message:"name is incoreect formate"
+<<<<<<< HEAD
+               message:"name is incorrect formate"
+=======
+               message:"organization unique name is incorrect formate"
+>>>>>>> 85d831d28a261a2fc83ddc4317c7d955c35fb237
         }
     },
-    Address: {
+    Address: {   
         type: String,
         trim: true
     },
@@ -50,13 +54,21 @@ var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
     },
     CreatedAt: {
         type: Date,
-        trim: true
+        trim: true,
+        default:new Date()
     },
     FounderDetails: {
         type:Object,
         trim:true
+    },
+    staff:{
+        type:Array,
+        default:new Array()
+    },
+    member:{
+        type:Array,
+        default:new Array()
     }
-
 }, {versionKey: false}))
 
 module.exports=OrganizationDetail;

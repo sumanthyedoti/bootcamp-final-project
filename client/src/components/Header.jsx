@@ -1,5 +1,5 @@
-import React from 'react'
-import '../componentCSS/header.css';
+import React from "react";
+import "../componentCSS/header.css";
 import HomeIcon from "@material-ui/icons/Home";
 import InboxIcon from "@material-ui/icons/Inbox";
 import { NavLink, Link } from 'react-router-dom';
@@ -10,8 +10,8 @@ import workspaceIcon from '../images/work.png';
 
 const styles = {
   navIcon: {
-    fontSize: '40px',
-    margin: '10px',
+    fontSize: "40px",
+    margin: "10px",
     padding: 0,
     color: 'whitesmoke',
   },
@@ -24,25 +24,24 @@ export default function Header(props) {
   let location = window.location.href.split('/');
   location= location[location.length-1]==='' ? location[location.length-2] : location[location.length-1];
   return (
-    <>
     <div className='header'>
-    {
-      (location==='organisation-panel' || location==='group-panel') ?
-      props.isSideNavOpen ? 
-      (<CloseIcon 
-        className='side-menu-button' 
-        style={styles.menuButton}
-        onClick= {props.showSideNavHandler}
-      />)
+      {
+        (location==='organisation-panel' || location==='group-panel') ?
+        props.isSideNavOpen ? 
+        (<CloseIcon 
+          className='side-menu-button' 
+          style={styles.menuButton}
+          onClick= {props.showSideNavHandler}
+        />)
+        :
+        (<MenuIcon 
+          className='side-menu-button'
+          style={styles.menuButton}
+          onClick= {props.showSideNavHandler}
+        />)
       :
-      (<MenuIcon 
-        className='side-menu-button'
-        style={styles.menuButton}
-        onClick= {props.showSideNavHandler}
-      />)
-    :
-    null
-    }
+      null
+      }
       <div className='container header-container'>
         <Link to="/home" className=''>
           <div className='logo'>
@@ -60,10 +59,7 @@ export default function Header(props) {
             <InboxIcon style={styles.navIcon} className='nav-icon' color='primary' />
             <PersonIcon style={styles.navIcon} className='nav-icon' color='primary' />
           </div>
-        </div>
       </div>
     </div>
-    </>
   )
 }
-
