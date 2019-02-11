@@ -45,6 +45,7 @@ class App extends Component {
           showSideNavHandler={this.showSideNavHandler} 
         />
         <Switch>
+        <Route path='/' component={Login} exact />
           <Route path='/login' component={Login} exact />
           <Route path='/home' component={Home} exact />
           <Route path='/workspace' component={Workspace} exact />

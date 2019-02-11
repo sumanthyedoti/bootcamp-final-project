@@ -2,27 +2,36 @@ import React, { Component } from "react";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import "../../componentCSS/login.css";
+import {Redirect} from 'react-router-dom'
 class Login extends Component {
   state = {
-    toggle: "signin"
+    toggle: "signin",
+    isSignedIn: false,
   };
 
   onClickSignin = () => {
     let newState = { ...this.state };
-    return this.setState({
+    this.setState({
       newState,
-      toggle: "signin"
+      toggle: "signin",
     });
   };
   onClickSignup = () => {
     let newState = { ...this.state };
-    return this.setState({
+    this.setState({
       newState,
       toggle: "signup"
     });
   };
+  componentDidMount(){
+    if(localStorage.getItem('user')){
+      this.setState((state) => ({
+        isSignedIn: !state.isSignedIn,
+      }))
+    }
+  }
   render() {
-    console.log(this.state.toggle);
+    if(this.state.isSignedIn===true) return <Redirect to='/home' />
     return (
       <section className="login-background">
         <div className="login">
