@@ -1,5 +1,8 @@
 var userDetail=require('./UserDetail');
-var mongoose = require('mongoose');
+var FileUpload=require('./FileUpload');
+var Post=require('./Post');
 module.exports={
-    userDetail:userDetail
+    userDetail:userDetail,
+    FileUpload:FileUpload,
+    Post:Post
 }

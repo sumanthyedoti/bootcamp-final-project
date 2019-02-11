@@ -61,6 +61,17 @@ var userDetail = mongoose.model('userDetail', new Schema({
         trim: true,
         required: true
     },
+    gender:{
+        type:String,
+        trim:true,
+        required:true,
+        validate:{
+              validator(gender){
+                    return /^male$|^female$|^other$/.test('other');
+               },
+               message:"Gender is not correct"
+        }
+    },
     createdAt: {
         type: Date,
         trim: true,
