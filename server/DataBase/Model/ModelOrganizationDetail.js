@@ -25,11 +25,7 @@ var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
             validator(Name){
                 return /^[a-zA-Z0-9_]{3,30}$/.test(Name)
                },
-<<<<<<< HEAD
                message:"name is incorrect formate"
-=======
-               message:"organization unique name is incorrect formate"
->>>>>>> 85d831d28a261a2fc83ddc4317c7d955c35fb237
         }
     },
     Address: {   
