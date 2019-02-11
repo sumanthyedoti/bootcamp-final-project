@@ -1,5 +1,4 @@
 
-
 class Detail{
 
     constructor(data){
@@ -17,7 +16,7 @@ class Detail{
             organization: []
         }]
         var userDetail=this.data;
-        var promie=new Promise((resolve,reject)=>{
+        var promise=new Promise((resolve,reject)=>{
             userDetail.insertMany(obj) 
             .then((data)=>{
               resolve({"success":data[0]})
@@ -26,12 +25,12 @@ class Detail{
               reject({"error":err})
             })
         })
-        return promie;
+        return promise;
 
     }
     userLogin(uid,pass){
         var userDetail=this.data;
-        var promie=new Promise((resolve,reject)=>{
+        var promise=new Promise((resolve,reject)=>{
             userDetail.find({$or:[{email:uid,password:pass},{Username:uid,password:pass}]})
             .then((data)=>{
                 if(data.length===1)
@@ -43,7 +42,7 @@ class Detail{
              reject({"error":err})
             })
         })
-        return promie;
+        return promise;
     }
 }
 

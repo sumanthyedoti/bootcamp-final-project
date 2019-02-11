@@ -68,3 +68,7 @@
 .post-liked{
   color: hsl(220, 50%, 50%);
 }
+
+@media (min-width: 704px){
+  
+}

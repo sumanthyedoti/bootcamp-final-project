@@ -1,0 +1,14 @@
+.workspace{
+  display: flex;
+}
+
+.workspace__main-div{
+  border: 1px solid grey;
+  min-height: 100px;
+}
+
+
+
+@media (min-width: 768px){
+  
+}
