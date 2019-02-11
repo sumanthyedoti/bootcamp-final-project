@@ -5,7 +5,7 @@ class Detail{
     constructor(data){
      this.data=data;
     }
-    insertUserDetail(name,Username,email,password,profilePic,Coverpic,DOB){
+    insertUserDetail(name,Username,email,password,profilePic,Coverpic,DOB,gender){
         var obj = [{
             Name: name,
             Username: Username,
@@ -14,6 +14,7 @@ class Detail{
             profilePic: profilePic,
             Coverpic: Coverpic,
             DOB: DOB,
+            gender:gender,
             organization: []
         }]
         var userDetail=this.data;

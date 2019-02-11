@@ -20,7 +20,8 @@ route.post("/signUp",function(req,res){
                                 req.body.pass,
                                 req.body.profilePic,
                                 req.body.coverPic,
-                                req.body.DOB
+                                req.body.DOB,
+                                req.body.gender
                                 )
     .then((data)=>{
         res.send(data);
