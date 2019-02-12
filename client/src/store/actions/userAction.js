@@ -1,3 +1,5 @@
+import {SIGNIN} from '../actions/types'
+
 export const signinAction = (email, pwd) => {
   const userBody = {
     "uid":email,
@@ -32,7 +34,7 @@ export const signinAction = (email, pwd) => {
 							localStorage.setItem('user', JSON.stringify(user))
 							localStorage.setItem('userData', JSON.stringify(json.success[0]));
               dispatch({
-                  type:"SIGNIN",
+                  type:SIGNIN,
                   payload: json.success[0]
               })
               resolve(json);

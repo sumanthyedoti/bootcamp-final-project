@@ -65,6 +65,7 @@ class Home extends Component {
     // localStorage.removeItem('user'); localStorage.removeItem('userData');
     if(!localStorage.getItem('user')) return <Redirect to='/login' />
     return (
+      
       <div className='container home-container'>
         <div className='main-div'>
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
+import RegistrationForm from './registration_form'
 import '../../componentCSS/workspace.css'
 
 export default class Workspace extends Component {
@@ -8,6 +9,9 @@ export default class Workspace extends Component {
       <div className='container workspace'>
 
         <div className='main-div workspace__main-div section'>
+        <div>
+          <RegistrationForm />
+        </div>
         <Link to="/organisation-panel" className=''>
           {'go to org'}
         </Link>
