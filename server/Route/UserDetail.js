@@ -10,7 +10,7 @@ route.post("/login",function(req,res){
         res.send(data);
     })
     .catch((err)=>{
-      res.send(err);
+      res.status(404).send(err);
     })
 })
 route.post("/signUp",function(req,res){

@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var cors=require('cors')
 var route=require('./Route');
 var app=express();
-console.log(route)
+mongoose.set('debug', true);
 mongoose.connect('mongodb://workull:workullmountblue1@ds127655.mlab.com:27655/workull', {
     useNewUrlParser: true
 }, () => {
@@ -18,9 +18,6 @@ app.use("/",route.userDetail)
 app.use('/',route.Post);
 app.use("/",route.Oraganization);
 // app.use("/",route.FileUpload);
-
-
-
 
 
 

@@ -1,52 +1,69 @@
-import React from "react";
-import "../componentCSS/header.css";
+import React from 'react'
+import '../componentCSS/header.css';
 import HomeIcon from "@material-ui/icons/Home";
 import InboxIcon from "@material-ui/icons/Inbox";
-// // import NotificationsIcon from "@material-ui/icons/Notifications";
+import { NavLink, Link } from 'react-router-dom';
 import PersonIcon from "@material-ui/icons/Person";
+import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
+import workspaceIcon from '../images/work.png';
 
 const styles = {
   navIcon: {
-    fontSize: "40px",
-    margin: "10px",
+    fontSize: '40px',
+    margin: '10px',
     padding: 0,
-    color: "whitesmoke"
+    color: 'whitesmoke',
+  },
+  menuButton:{
+    fontSize: '34px',
   }
-};
+}
 
 export default function Header(props) {
-  const location = window.location.href.split("/");
+  let location = window.location.href.split('/');
+  location= location[location.length-1]==='' ? location[location.length-2] : location[location.length-1];
   return (
-    <div className="header">
-      <div className="container header-container">
-        <div className="logo">
-          <span className="logo__title">Collab-G</span>
-        </div>
-        {location[location.length - 1] === "" ||
-        location[location.length - 1] === "login" ? null : (
-          <div className="nav-div">
-            <div className="nav-icons">
-              <HomeIcon
-                style={styles.navIcon}
-                className="nav-icon"
-                color="primary"
-              />
-              <img id="work-icon" src="./images/work.png" />
-              <InboxIcon
-                style={styles.navIcon}
-                className="nav-icon"
-                color="primary"
-              />
-
-              <PersonIcon
-                style={styles.navIcon}
-                className="nav-icon"
-                color="primary"
-              />
-            </div>
+    <>
+    <div className='header'>
+    {
+      (location==='organisation-panel' || location==='group-panel') ?
+      props.isSideNavOpen ? 
+      (<CloseIcon 
+        className='side-menu-button' 
+        style={styles.menuButton}
+        onClick= {props.showSideNavHandler}
+      />)
+      :
+      (<MenuIcon 
+        className='side-menu-button'
+        style={styles.menuButton}
+        onClick= {props.showSideNavHandler}
+      />)
+    :
+    null
+    }
+      <div className='container header-container'>
+        <Link to="/home" className=''>
+          <div className='logo'>
+            <span className='logo__title'>CO-LiNk</span>
           </div>
-        )}
+        </Link>
+        <div className='nav-div'>
+          <div className='nav-icons'>
+            <NavLink to="/home" className=''>
+              <HomeIcon style={styles.navIcon} className='nav-icon' color='primary' />
+            </NavLink>
+            <NavLink to="/workspace" className=''>
+              <img id='work-icon' src={workspaceIcon} alt='workspace icon'/>            
+            </NavLink>
+            <InboxIcon style={styles.navIcon} className='nav-icon' color='primary' />
+            <PersonIcon style={styles.navIcon} className='nav-icon' color='primary' />
+          </div>
+        </div>
       </div>
     </div>
-  );
+    </>
+  )
 }
+
