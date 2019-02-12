@@ -4,13 +4,10 @@
   "private": true,
   "dependencies": {
     "@material-ui/icons": "^3.0.2",
-<<<<<<< HEAD
     "material-ui-pickers": "latest",
     "date-fns": "next",
     "@date-io/date-fns": "latest",
-=======
     "@material-ui/core": "^3.9.2",
->>>>>>> 85d831d28a261a2fc83ddc4317c7d955c35fb237
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",

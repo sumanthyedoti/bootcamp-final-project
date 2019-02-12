@@ -1,0 +1,15 @@
+.about{
+    border:1px solid red;
+    /* text-align: c */
+    margin-top:20px;
+    display: flex;
+}
+.text-area{
+    align-self: center;
+    width: 64%;
+    height: 129px;
+}
+.about h1{
+    /* float: left; */
+    border:1px solid red
+}
