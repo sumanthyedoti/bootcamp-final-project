@@ -45,10 +45,8 @@ var post = mongoose.model('Post', new Schema({
     Title: {
         type: String,
         trim: true,
-        minlength: 3,
-        maxlength: 20
     },
-    Text: {
+    TextData: {
         type: String,
         minlength: 10
     },

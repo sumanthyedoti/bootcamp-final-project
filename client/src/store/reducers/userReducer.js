@@ -1,8 +1,8 @@
-import  {POST_POST, SIGNIN, SIGNUP} from '../actions/types';
+import  {POST_POST, GET_POSTS, SIGNIN, SIGNUP} from '../actions/types';
 
 const initialState = {
-  // Username: '',
-  // name: '',
+  user: {},
+  posts: [],
 }
 
 export function userReducer (state=initialState, {type, payload}) {
@@ -11,11 +11,17 @@ export function userReducer (state=initialState, {type, payload}) {
     case POST_POST:
       return {
         ...state,
+        posts: [...state.posts, payload],
+      }
+    case GET_POSTS:
+      return {
+        ...state,
+        posts: [...state.posts, ...payload],
       }
     case SIGNIN:
     return{
       ...state,
-      ...payload
+      user: payload,
     }
     case SIGNUP:
     return{

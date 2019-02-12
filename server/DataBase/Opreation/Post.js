@@ -27,5 +27,18 @@ class Post{
        })
        return promise;
     }
+    getPostsOfUser(uid){
+        var Post=this.data;
+        var promise=new Promise((resolve,reject)=>{
+            Post.find({"PostBy._id": uid}) 
+            .then((result)=>{
+                resolve({"success":result});
+            })
+            .catch((err)=>{
+                reject({"error":err});   
+            })
+        })
+        return promise;
+    }
 }
 module.exports=Post;

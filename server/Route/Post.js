@@ -22,5 +22,15 @@ route.post("/auth/Post",function(req,res){
     })
 })
 
+route.get("/auth/Post",function(req,res){
+    const uid = req.headers.uid
+     PostData.getPostsOfUser(uid)
+    .then((data)=>{
+        res.send(data);
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
+})
 
 module.exports=route;

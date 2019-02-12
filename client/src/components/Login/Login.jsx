@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Signin from "./Signin";
 import Signup from "./Signup";
+import {connect} from 'react-redux';
 import "../../componentCSS/login.css";
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
+import {signinAction} from '../../store/actions/userAction';
 class Login extends Component {
   state = {
     toggle: "signin",
@@ -11,10 +13,11 @@ class Login extends Component {
 
   onClickSignin = () => {
     let newState = { ...this.state };
-    this.setState({
+    this.setState((state)=>({
       newState,
       toggle: "signin",
-    });
+      isSignedIn: !state.isSignedIn,
+    }));
   };
   onClickSignup = () => {
     let newState = { ...this.state };
@@ -23,14 +26,22 @@ class Login extends Component {
       toggle: "signup"
     });
   };
-  componentDidMount(){
-    if(localStorage.getItem('user')){
-      this.setState((state) => ({
-        isSignedIn: !state.isSignedIn,
-      }))
-    }
+
+  signinHandler=()=>{
+    const email = document.getElementById('filled-email-input');
+    const pwd = document.getElementById('filled-password-input');
+    this.props.signin(email.value, pwd.value)
+      .then(data => {
+        email.value='';
+        pwd.value='';
+        this.setState((state)=>({
+          isSignedIn: true
+        }));
+      })
+      .catch(err => console.log(err.message))
   }
   render() {
+    console.log(this.state)
     if(this.state.isSignedIn===true) return <Redirect to='/home' />
     return (
       <section className="login-background">
@@ -42,10 +53,18 @@ class Login extends Component {
             <div onClick={this.onClickSignup}>Signup</div>
           </div>
         </div>
-        {this.state.toggle === "signin" ? <Signin /> : <Signup />}
+        {this.state.toggle === "signin" ? 
+        <Signin signinHandler={this.signinHandler} /> 
+        : 
+        <Signup />}
       </section>
     );
   }
 }
-
-export default Login;
+const mapStateToProps=(state) =>{
+  
+}
+const mapActionsToProps = ({
+  signin: signinAction
+})
+export default connect(mapStateToProps, mapActionsToProps)(Login);
