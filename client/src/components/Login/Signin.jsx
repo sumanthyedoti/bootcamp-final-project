@@ -26,16 +26,6 @@ const styles = theme => ({
 });
 
 class Signin extends Component {
-  signinHandler=()=>{
-    const email = document.getElementById('filled-email-input');
-    const pwd = document.getElementById('filled-password-input');
-    this.props.signin(email.value, pwd.value)
-      .then(data => {
-        email.value='';
-        pwd.value='';
-      })
-      .catch(err => console.log(err.message))
-  }
   render() {
     const { classes } = this.props;
     return (
@@ -71,7 +61,7 @@ class Signin extends Component {
                 color="primary"
                 style = {{width: "25%","border-radius": "2px",padding: "10px"}}
                 className={classNames(classes.margin, classes.cssRoot)}
-                onClick={this.signinHandler}
+                onClick={this.props.signinHandler}
               >
                 Login
               </Button>
@@ -86,10 +76,10 @@ class Signin extends Component {
 Signin.propTypes = {
   classes: PropTypes.object.isRequired
 };
-// const mapStateToProps=(state) =>{
-//   console.log(state)
-// }
+const mapStateToProps=(state) =>{
+  console.log(state)
+}
 const mapActionsToProps = ({
   signin: signinAction
 })
-export default connect(null, mapActionsToProps)(withStyles(styles)(Signin));
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Signin));

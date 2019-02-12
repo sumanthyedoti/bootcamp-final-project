@@ -1,18 +1,15 @@
-import { POST_POST ,SIGNIN,SIGNUP} from "./types";
-// import {  } from "./types";
-// export function postPostAction(username) {
-//   return (dispatch)=>({
-//     type: POST_POST,
-//     payload: {}
-//   })
-// }
-
 export const signinAction = (email, pwd) => {
   const userBody = {
     "uid":email,
     "pass":pwd
   };
   return function (dispatch) {
+		if(localStorage.getItem('userData')){
+			return dispatch({
+				type:"SIGNIN",
+				payload: JSON.parse(localStorage.getItem('userData'))
+			})
+		}
     return new Promise((resolve, reject) => {
         fetch("http://localhost:4000/login/", {
             method: "POST",
@@ -28,13 +25,12 @@ export const signinAction = (email, pwd) => {
           })
           .then(json=>{
               if(!json.error){
-              console.log(json)
               const user = {
                   username: json.success[0].Username,
                   email: json.success[0].email
               }
-              console.log(user)
-              localStorage.setItem('user', user)
+							localStorage.setItem('user', JSON.stringify(user))
+							localStorage.setItem('userData', JSON.stringify(json.success[0]));
               dispatch({
                   type:"SIGNIN",
                   payload: json.success[0]
@@ -50,7 +46,6 @@ export const signinAction = (email, pwd) => {
 }
 
 export const signupAction=(Name,Username,Email,Password,Gender,BirthDate)=>{
-    console.log('hiiii')
     let userbody = {
         "name":Name,
         "username":Username,
@@ -63,53 +58,30 @@ export const signupAction=(Name,Username,Email,Password,Gender,BirthDate)=>{
         
     }
     return function(dispatch) {
-        //  debugger;
-        console.log(JSON.stringify(userbody))
-        return new Promise((resolve, reject) => {
-            fetch("http://localhost:4000/signUp/", {
-                method: "POST",
-                mode:"cors",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                
-                body: JSON.stringify(userbody)
-              })
-              .then((res)=>{
-                 return res.json()
-              })
-              .then(json=>{
-                  console.log(json)
-                if(!json.error){
-                    dispatch({
-                        type:"SIGNUP",
-                        payload: json.success
-                    })
-                      resolve(json);
-                }else reject(new Error(json.error))
-              })
-          });
-        }
+			console.log(JSON.stringify(userbody))
+			return new Promise((resolve, reject) => {
+				fetch("http://localhost:4000/signUp/", {
+					method: "POST",
+					mode:"cors",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					
+					body: JSON.stringify(userbody)
+					})
+					.then((res)=>{
+						return res.json()
+					})
+					.then(json=>{
+						if(!json.error){
+							dispatch({
+								type:"SIGNUP",
+								payload: json.success
+							})
+								resolve(json);
+						}else reject(new Error(json.error))
+					})
+				});
+			}
 }
 
-
-
- //   .then(json=>{
-            //       if(!json.error){
-            //       console.log(json)
-            //       const user = {
-            //           username: json.success[0].Username,
-            //           email: json.success[0].email
-            //       }
-            //       console.log(user)
-            //       localStorage.setItem('user', user)
-                //   dispatch({
-                //       type:"SIGNIN",
-                //       payload: json.success[0]
-                //   })
-            //       resolve(json);
-            //     }
-            //     else{
-            //           reject(new Error(json.error))
-            //     } 
-            //   })

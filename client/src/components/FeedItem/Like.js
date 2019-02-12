@@ -8,15 +8,16 @@ const styles = {
 }
 
 const Like = props => {
-  // const {likeHandler, post_id, isLiked} = props;
+  const {likeHandler, post_id, isLiked} = props;
   return (
     <>
     <div 
-      className='like-button' 
-      // onClick = {() => likeHandler(post_id)}
+      className={isLiked ? 'post-liked like-button' : 'like-button'} 
+      onClick = {() => likeHandler(post_id, isLiked)}
     >
-    <ThumbUpIcon style={styles.likeButton} className='feed-item__like-button' />
-     &nbsp; Like
+    <ThumbUpIcon style={styles.likeButton} 
+    className={isLiked ? 'post-liked feed-item__like-button' : 'feed-item__like-button'} />
+     &nbsp; {isLiked ? 'Liked' : 'Like'}
     </div>
     </>
   );

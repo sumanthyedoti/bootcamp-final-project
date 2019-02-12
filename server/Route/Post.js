@@ -22,5 +22,35 @@ route.post("/auth/Post",function(req,res){
     })
 })
 
+route.get("/auth/Post",function(req,res){
+    const uid = req.headers.uid
+     PostData.getPostsOfUser(uid)
+    .then((data)=>{
+        res.send(data);
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
+})
+
+route.post("/auth/Post/like",function(req,res){
+     PostData.likePost(req.body.postId, req.body.likedBy)
+    .then((data)=>{
+        res.send(data);
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
+})
+
+route.post("/auth/Post/dislike",function(req,res){
+    PostData.dislikePost(req.body.postId, req.body.dislikedBy)
+   .then((data)=>{
+       res.send(data);
+   })
+   .catch((err)=>{
+     res.send(err);
+   })
+})
 
 module.exports=route;

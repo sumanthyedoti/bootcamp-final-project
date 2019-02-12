@@ -27,5 +27,46 @@ class Post{
        })
        return promise;
     }
+    getPostsOfUser(uid){
+        var Post=this.data;
+        var promise=new Promise((resolve,reject)=>{
+            Post.find({"PostBy._id": uid}) 
+            .then((result)=>{
+                resolve({"success":result});
+            })
+            .catch((err)=>{
+                reject({"error":err});   
+            })
+        })
+        return promise;
+    }
+
+    likePost(pid, likedBy) {
+        var Post=this.data;
+        var promise=new Promise((resolve,reject)=>{
+            Post.updateOne({"_id": pid}, {$inc: {like: 1}, $addToSet: {likedBy: likedBy}})
+            .then((result)=>{
+                resolve({"success":result});
+            })
+            .catch((err)=>{
+                reject({"error":err});   
+            })
+        })
+        return promise;
+    }
+
+    dislikePost(pid, dislikedBy) {
+        var Post=this.data;
+        var promise=new Promise((resolve,reject)=>{
+            Post.updateOne({"_id": pid}, {$inc: {like: -1}, $pull: {likedBy: dislikedBy}})
+            .then((result)=>{
+                resolve({"success":result});
+            })
+            .catch((err)=>{
+                reject({"error":err});   
+            })
+        })
+        return promise;
+    }
 }
 module.exports=Post;

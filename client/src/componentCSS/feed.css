@@ -1,6 +1,5 @@
 .post-feed{
   margin-top: 40px;
-  background-color: #fff;
 }
 .feed-item{
   background-color: #fff;
@@ -14,7 +13,7 @@
 .post-by, .commented-by{
   font-weight: bold;
   font-size: 16px;
-  color: rgb(72, 62, 155);
+  color: hsl(249, 53%, 46%);
   cursor: pointer;
   padding-right: 6px;
 }
@@ -66,9 +65,92 @@
   cursor: pointer;
 }
 .post-liked{
-  color: hsl(220, 50%, 50%);
+  color: hsl(249, 53%, 46%);
 }
 
 @media (min-width: 704px){
   
+}
+
+.like-button:active, .comment-button:active, .share-button:active{
+  transition-property: transform;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+  transform: scale(0.8);
+}
+.post-liked .like-img{
+  animation-name: like-anim;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+}
+  @keyframes like-anim{
+    0%{
+      transform: rotate(0deg);
+      transform: scale(1);
+    }
+    20%{
+      transform: scale(0.8);
+      transform: rotate(10deg);
+    }
+    40%{
+      transform: scale(1.1);
+    }
+    60%{
+      transform: scale(1.2);
+      transform: rotate(-20deg);
+    }
+    70%{
+      transform: scale(1.4);
+      transform: rotate(-10deg);
+    }
+    100%{
+      transform: scale(1);
+      transform: rotate(0deg);
+    }
+  }
+.like-img, .comment-img, .share-img{
+  width: 50px;
+  height: 46px;
+  padding: 4px;
+  filter: opacity(0.8);
+}
+.comment-img, .share-img{
+  width: 44px;
+  height: 42px;
+  filter: opacity(0.6);
+}
+.comment-box{
+  border: 1px solid gray;
+  padding: 8px 20px;
+  width: 104%;
+  margin-left: -2%;
+  border-radius: 50px;
+  font-size: 14px;
+  background: rgb(242, 242, 245);
+}
+.comments-div{
+  margin: 10px;
+}
+.comment{
+  padding: 4px;
+}
+.comment-line{
+  padding: 8px 12px;
+  margin-top: 6px;
+  background: rgb(242, 242, 245);
+  display: inline-block;
+  border-radius: 50px;
+}
+
+
+@media (min-width: 768px){
+  .comment-box{
+    border: 1px solid gray;
+    padding: 8px 20px;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 50px;
+    font-size: 14px;
+    background: rgb(242, 242, 245);
+  } 
 }
