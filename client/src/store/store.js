@@ -1,9 +1,12 @@
 import thunk from 'redux-thunk';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import {userReducer} from './reducers/userReducer'
+import {postReducer} from './reducers/postReducer'
+
 
 const cheifReducer =  combineReducers({
-  reducedUser: userReducer
+  reducedUser: userReducer,
+  reducedPosts: postReducer,
 })
 
 const store = createStore(cheifReducer, compose(applyMiddleware(thunk),   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));

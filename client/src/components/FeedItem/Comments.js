@@ -5,7 +5,7 @@ const Comments = props => {
     <>
     <div
       className='comment-button' 
-      // onClick={() => props.displayComments()}
+      onClick={() => props.displayComments()}
     >
     <CommentIcon className='feed-item__comment-button' />
     &nbsp; Comments

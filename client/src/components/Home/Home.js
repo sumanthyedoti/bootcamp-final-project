@@ -6,9 +6,13 @@ import PostForm from './PostForm';
 import {Redirect} from 'react-router-dom'
 import {
   signinAction, 
-  postAPostAction, 
-  getUserPostsAction
 } from '../../store/actions/userAction';
+import {
+  postAPostAction, 
+  getUserPostsAction,
+  likePost,
+  dislikePost
+} from '../../store/actions/postActions';
 
 class Home extends Component {
   componentDidMount(){
@@ -46,7 +50,16 @@ class Home extends Component {
     });
   }
   componentDidUpdate(){
-    console.log(this.props.posts)
+
+  }
+  likeHandler = (postId, isLiked) => {
+    if(!isLiked) this.props.likePost(postId);
+    else this.props.dislikePost(postId);
+  }
+  commentHandler = (e) => {
+    if(e.keyCode===13) {
+      e.target.value='';
+    }
   }
   render() {
     // localStorage.removeItem('user'); localStorage.removeItem('userData');
@@ -62,7 +75,11 @@ class Home extends Component {
           />          
 
           <div className='section'>
-            <Feed posts = {this.props.posts} />
+            <Feed 
+              posts = {this.props.posts} 
+              commentHandler={this.commentHandler}
+              likeHandler={this.likeHandler}
+            />
           </div>
         </div>
 
@@ -76,13 +93,15 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.reducedUser.user,
-    posts: state.reducedUser.posts,
+    posts: state.reducedPosts.posts,
   }
 }
 
 const mapActionsToProps = ({
   signin: signinAction,
   postAPost: postAPostAction,
-  getUserPosts: getUserPostsAction
+  getUserPosts: getUserPostsAction,
+  likePost,
+  dislikePost
 })
 export default connect(mapStateToProps, mapActionsToProps)(Home);
