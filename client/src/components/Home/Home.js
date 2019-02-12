@@ -54,7 +54,9 @@ class Home extends Component {
     document.getElementById('remove-image-button').style.display='none';
   }
   render() {
+    // localStorage.clear();
     return (
+      
       <div className='container home-container'>
         <div className='main-div'>
           <div className='post-form section'>

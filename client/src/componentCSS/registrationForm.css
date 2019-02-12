@@ -1,15 +1,33 @@
-.about{
-    border:1px solid red;
-    /* text-align: c */
-    margin-top:20px;
-    display: flex;
+.registration {
+  margin-top: 20px;
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
 }
-.text-area{
-    align-self: center;
-    width: 64%;
-    height: 129px;
+.text-area {
+  padding-top: 18px;
+  padding-left: 15px;
+  border: 1.5px solid grey;
+  width: 100%;
+  height: 129px;
 }
-.about h1{
-    /* float: left; */
-    border:1px solid red
+.org-details {
+  width: 100%;
+  border: 1.5px solid grey;
 }
+.org-name {
+  margin-top: 8px;
+  margin-bottom: 30px;
+  /* display:flex;  */
+  /* flex-direction: column;*/
+  /* justify-content: space-around; */
+}
+.org-name > label {
+  margin-left: 7px;
+}
+.MuiInput-underline-156:after {
+  border-bottom: 2px solid hsl(210, 25%, 30%) !important;
+}
+.MuiOutlinedInput-root-163.MuiOutlinedInput-focused-164.MuiOutlinedInput-notchedOutline-170 {
+    border-color:red !important;
+}
+

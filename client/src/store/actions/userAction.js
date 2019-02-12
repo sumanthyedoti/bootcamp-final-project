@@ -36,7 +36,7 @@ export const signinAction = (email, pwd) => {
               console.log(user)
               localStorage.setItem('user', user)
               dispatch({
-                  type:"SIGNIN",
+                  type:SIGNIN,
                   payload: json.success[0]
               })
               resolve(json);
@@ -82,7 +82,7 @@ export const signupAction=(Name,Username,Email,Password,Gender,BirthDate)=>{
                   console.log(json)
                 if(!json.error){
                     dispatch({
-                        type:"SIGNUP",
+                        type:SIGNUP,
                         payload: json.success
                     })
                       resolve(json);

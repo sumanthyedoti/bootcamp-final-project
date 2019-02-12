@@ -61,9 +61,13 @@ var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
         type:Array,
         default:new Array()
     },
+    about:{
+        type:Array,
+        trim: true
+    },
     member:{
         type:Array,
-        default:new Array()
+        default:[]
     }
 }, {versionKey: false}))
 

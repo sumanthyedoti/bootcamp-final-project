@@ -6,8 +6,8 @@ var route=express.Router();
 
 route.post("/auth/organization",function(req,res){
     console.log(req.body)
-    var {Name,organisationUniqueName,Address,LogoPic,coverPic,Organisation,ETD_Date,FounderDetails}=req.body;
-        Org.insertNewOrganization(Name,organisationUniqueName,Address,LogoPic,coverPic,Organisation,ETD_Date,FounderDetails)
+    var {Name,organisationUniqueName,Address,LogoPic,coverPic,Organisation,ETD_Date,FounderDetails,about}=req.body;
+        Org.insertNewOrganization(Name,organisationUniqueName,Address,LogoPic,coverPic,Organisation,ETD_Date,FounderDetails,about)
         .then((data)=>{
           res.send(data)
         })
