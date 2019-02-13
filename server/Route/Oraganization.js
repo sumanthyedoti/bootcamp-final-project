@@ -1,13 +1,13 @@
 var express=require('express');
 var schema=require('../DataBase/Model');
 var {Organization}=require('../DataBase/Opreation')
-var Org=new Organization(schema.OrganizationDetail)
+var Org=new Organization(schema)
 var route=express.Router();
 
 route.post("/auth/organization",function(req,res){
     console.log(req.body)
-    var {Name,organisationUniqueName,Address,LogoPic,coverPic,Organisation,ETD_Date,FounderDetails,about}=req.body;
-        Org.insertNewOrganization(Name,organisationUniqueName,Address,LogoPic,coverPic,Organisation,ETD_Date,FounderDetails,about)
+    var {name,orgId,address,logoPic,coverPic,organisation,etdDate,founderDetails,about}=req.body;
+        Org.insertNewOrganization(name,orgId,address,logoPic,coverPic,organisation,etdDate,founderDetails,about)
         .then((data)=>{
           res.send(data)
         })
@@ -16,8 +16,9 @@ route.post("/auth/organization",function(req,res){
         })
 })
 route.post("/auth/member/addmember",function(req,res){
-     var {org_id,uid}=req.body;
-     Org.insertNewMember(org_id,uid)
+     var {orgId,uid,memberType,msg}=req.body;
+     console.log(orgId,uid);
+     Org.insertNewMember(orgId,uid,memberType,msg)
      .then((data)=>{
          res.send(data)
      })
@@ -26,13 +27,43 @@ route.post("/auth/member/addmember",function(req,res){
      })
 })
 route.post("/auth/member/addstaff",function(req,res){
-    var {org_id,uid}=req.body;
-    Org.insertNewStaff(org_id,uid)
+    var {orgId,uid}=req.body;
+    Org.insertNewStaff(orgId,uid)
     .then((data)=>{
         res.send(data)
     })
     .catch((err)=>{
         res.send(err)
     })
+})
+route.post("/auth/member/remove",function(req,res){
+    var {orgId,uid}=req.body;
+    Org.deleteMember(orgId,uid)
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+route.get("/auth/organization/join/:orgId/:uid",function(req,res){
+    //var {orgId,uid}=req.body;
+    Org.joinLinkConformation(req.params.orgId,req.params.uid)
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+route.get("/organization/members/:id",function(req,res){
+    console.log(req.params.id);
+  Org.getAllMember(req.params.id)
+  .then((data)=>{
+      res.send(data)
+  })
+  .catch((err)=>{
+      res.send(err);
+  })
 })
 module.exports=route;
