@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
-    Name: {
+    name: {
         type: String,
         trim: true,
         required: true,
@@ -14,7 +14,7 @@ var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
             message:"name is incoreect formate"
         }
     },
-    organisationUniqueName: {
+    orgId: {
         type: String,
         trim: true,
         required: true,
@@ -22,17 +22,17 @@ var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
         minlength:2,
         maxlength:15,
         validate:{
-            validator(Name){
-                return /^[a-zA-Z0-9_]{3,30}$/.test(Name)
+            validator(orgId){
+                return /^[a-zA-Z0-9_]{3,30}$/.test(orgId)
                },
-               message:"name is incorrect formate"
+               message:"orgId is incorrect formate"
         }
     },
-    Address: {   
+    address: {   
         type: String,
         trim: true
     },
-    LogoPic: {
+    logoPic: {
         type: String,
         trim: true
     },
@@ -40,35 +40,33 @@ var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
         type: String,
         trim: true
     },
+    about:{
+       type:String,
+       trim:true
+    },
     Organisation: {
         type: String,
         trim: true
     },
-    ETD_Date: {
+    etdDate: {
         type: Date,
         trim: true
     },
-    CreatedAt: {
+    createdAt: {
         type: Date,
         trim: true,
         default:new Date()
     },
-    FounderDetails: {
-        type:Object,
+    founderDetails: {
+        type:String,
         trim:true
     },
-    staff:{
-        type:Array,
-        default:new Array()
+    memberIds:{
+         type:Array
     },
-    about:{
-        type:Array,
-        trim: true
-    },
-    member:{
-        type:Array,
-        default:[]
-    }
+    members:{
+          type:Array,
+        }
 }, {versionKey: false}))
 
 module.exports=OrganizationDetail;
