@@ -123,9 +123,10 @@ class RegistrationForm extends React.Component {
         <Button
           variant="outlined"
           color="secondary"
+          className='create-org-button'
           onClick={this.handleClickOpen}
         >
-           + Create Org
+           &#10010; Create Org
         </Button>
         <Dialog
           onClose={this.handleClose}

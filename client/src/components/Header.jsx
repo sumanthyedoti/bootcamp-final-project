@@ -47,7 +47,7 @@ export default function Header(props) {
         <div className="container header-container">
           <Link to="/home" className="">
             <div className="logo">
-              <span className="logo__title">CollabG</span>
+              <span className="logo__title">Collab-G</span>
             </div>
           </Link>
           {location === "login" ? null : (

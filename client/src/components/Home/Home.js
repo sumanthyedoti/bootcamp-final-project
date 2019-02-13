@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import '../../componentCSS/home.css';
 import Feed from './Feed';
+import SideDiv from '../SideDiv';
 import PostForm from './PostForm';
 import {Redirect} from 'react-router-dom'
 import {
@@ -17,7 +18,7 @@ import {
 class Home extends Component {
   componentDidMount(){
     this.props.signin();
-    this.props.getUserPosts();
+    if(this.props.posts.length===0)this.props.getUserPosts();
   }
   showImageHandler=(e)=>{
     const photo = document.getElementById('post-photos');
@@ -84,9 +85,8 @@ class Home extends Component {
           </div>
         </div>
 
-        <div className='side-div section'>
-          <h3 className='side-title'>Recommended for you</h3>
-        </div>
+        <SideDiv />
+        
       </div>
     )
   }
