@@ -16,9 +16,9 @@ route.post("/auth/organization",function(req,res){
         })
 })
 route.post("/auth/member/addmember",function(req,res){
-     var {orgId,uid,memberType}=req.body;
+     var {orgId,uid,memberType,msg}=req.body;
      console.log(orgId,uid);
-     Org.insertNewMember(orgId,uid,memberType)
+     Org.insertNewMember(orgId,uid,memberType,msg)
      .then((data)=>{
          res.send(data)
      })

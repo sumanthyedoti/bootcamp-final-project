@@ -16,16 +16,16 @@ route.post("/auth/group",function(req,res){
         })
 })
 route.post("/auth/member/group/addmember",function(req,res){
-    var {gId,Username,email,name,memberType}=req.body;
+    var {gId,Username,email,name,memberType,msg}=req.body;
     var uid={
          Username:Username,
          email:email,
          name:name,
          memberType:memberType,
          addDate:new Date()
-     }
+     };
      console.log(uid);
-     group.insertNewMember(gId,uid)
+     group.insertNewMember(gId,uid,msg)
      .then((data)=>{
          res.send(data)
      })

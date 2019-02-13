@@ -55,8 +55,9 @@ class Group{
         })
         return promise;
     }
-    insertNewMember(gId,uid){
+    insertNewMember(gId,uid,msg){
         var {Group}=this.data;
+        var userDetail=this.data.userDetail;
         console.log(gId+" dd "+uid);
         var promise=new Promise((resolve,reject)=>{
             Group.findById(gId)
@@ -72,10 +73,25 @@ class Group{
                 else{
                     console.log(data.member.length);
                     Group.update({_id:gId},{ $addToSet: { "member":uid } })
-                    .then((data)=>{
+                    .then(async(data)=>{
                         console.log(data);
-                        if (data.nModified > 0)
-                       resolve({"success":"member added successfuly"});
+                        if (data.nModified > 0){
+                            var notification={
+                                msg:msg,
+                                link:'',
+                                crreateDate:new Date(),
+                                read:false
+                            };
+                          try{  
+                          await userDetail.update({Username:uid.Username},{$addToSet:{"notification":notification}})
+                          await userDetail.update({Username:uid.Username},{$addToSet:{"organization":{_id:gId}}})
+                             resolve({"success":"member added successfuly"});
+                          }
+                          catch(err){
+                            reject({"error":err});
+                          }
+                       
+                        }
                         else
                          reject({"error":"member already added"});
                     })

@@ -83,8 +83,10 @@ var userDetail = mongoose.model('userDetail', new Schema({
         required: true
     },
     organization: {
-        type: Array,
-        trim: true
+        type: Array
+    },
+    notification:{
+        type:Array
     }
 }, {versionKey: false}))
 

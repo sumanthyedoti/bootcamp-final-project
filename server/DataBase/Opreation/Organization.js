@@ -69,7 +69,7 @@ class Organization{
         })
         return promise;
     }
-    insertNewMember(orgId,uid,memberType){
+    insertNewMember(orgId,uid,memberType,msg){
         var organization=this.data.OrganizationDetail;
         var userDetail=this.data.userDetail;
         var promise=new Promise(async(resolve,reject)=>{
@@ -86,8 +86,16 @@ class Organization{
                       console.log(data);
                       if(data.nModified>0){
                         var data1=await organization.update({_id:orgId},{$addToSet:{"members":udata}})
-                          if(data1.nModified>0) 
+                          if(data1.nModified>0){ 
+                              var notification={
+                                  msg:msg,
+                                  link:'',
+                                  crreateDate:new Date(),
+                                  read:false
+                              };
+                            await userDetail.update({Username:uid},{$addToSet:{"notification":notification}})
                             resolve({"success":"member added successfuly"})
+                          }
                            else{ 
                           await organization.update({_id:orgId},{$pull:{"memberIds":users}})
                           reject({"error":"failed due to server not responce"});  
@@ -111,17 +119,35 @@ class Organization{
     }
     deleteMember(orgId,uid){
         var organization=this.data.OrganizationDetail;
-        var promise=new Promise((resolve,reject)=>{
-            organization.update({_id:orgId},{$pull:{member:{_id:uid}}})
-            .then((data)=>{
-                if (data.nModified > 0)
-                resolve({"success":"member deleted successfuly"});
-                 else
-                  reject({"error":"member is not added"});
-            })
-            .catch((err)=>{
-                reject({"error":err});
-            })
+        var promise=new Promise(async(resolve,reject)=>{
+            try{
+               var dmodifi=  await organization.update({_id:orgId},{$pull:{"memberIds":{Username:uid}}})
+               if(dmodifi.nModified>0){
+                 var dmodifi1= await organization.update({_id:orgId},{$pull:{"members":{Username:uid}}})
+                   if(dmodifi1.nModified>0){
+                       resolve({"success":"member deleted success"})
+                   }
+                   else{
+                       reject({"error":"error1"})
+                   }
+               }
+               else{
+                reject({"error":"error2"})
+               }
+            }
+            catch(err){
+              reject({"error":err})
+            }
+            // .then((data)=>{
+            //     if (data.nModified > 0)
+            //     resolve({"success":"member deleted successfuly"});
+            //      else
+            //       reject({"error":"member is not added"});
+            // })
+            // .catch((err)=>{
+            //     reject({"error":err});
+            // })
+
         });
         return promise;
     }

@@ -2,7 +2,7 @@ var express=require('express');
 var schema=require('../DataBase/Model');
 var {userDetail}=require('../DataBase/Opreation');
 var route=express.Router();
-var UserSchema=new userDetail(schema.userDetail);
+var UserSchema=new userDetail(schema);
 route.post("/login",function(req,res){
     console.log(req.body);
     UserSchema.userLogin(req.body.uid,req.body.pass)
@@ -23,6 +23,28 @@ route.post("/signUp",function(req,res){
                                 req.body.DOB,
                                 req.body.gender
                                 )
+    .then((data)=>{
+        res.send(data);
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+route.get("/searchMemberOrg/:orgId",function(req,res){
+    var seachKey=req.query.searchKey;
+    var orgId=req.params.orgId;
+    UserSchema.searchMemberOrganization(orgId,seachKey)
+    .then((data)=>{
+        res.send(data);
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+route.get("/searchMemberGroup/:gId",function(req,res){
+    var seachKey=req.query.searchKey;
+    var gId=req.params.gId;
+    UserSchema.searchMemberGroup(gId,seachKey)
     .then((data)=>{
         res.send(data);
     })
