@@ -9,28 +9,28 @@ export default class OragnisationPanel extends Component {
     return (
       <div className='container org'>
         <div className='side-nav'>
-        <ul>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage People'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Groups'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Events'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Requests'}
-            </NavLink>
-          </li>
-        </ul>
+          <ul>
+            <li>
+              <NavLink to="/" className=''>
+                {'Manage People'}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/" className=''>
+                {'Manage Groups'}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/" className=''>
+                {'Manage Events'}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/" className=''>
+                {'Manage Requests'}
+              </NavLink>
+            </li>
+          </ul>
         </div>
 
         <div className='side-nav-div'>
