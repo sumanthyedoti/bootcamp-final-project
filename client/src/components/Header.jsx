@@ -29,7 +29,13 @@ export default function Header(props) {
   return (
     <>
       <div className="header">
-        {location === "organisation-panel" || location === "group-panel" ? (
+        {location === "organisation-panel" || 
+        location === "group-panel" ||
+        location === "people" ||
+        location === "groups" ||
+        location === "events" ||
+        location === "requests"
+        ? (
           props.isSideNavOpen ? (
             <CloseIcon
               className="side-menu-button"

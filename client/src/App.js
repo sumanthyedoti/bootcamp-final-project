@@ -22,6 +22,7 @@ class App extends Component {
     }));
   }
   showSideNavHandler=()=>{
+    console.log('cc');
     const sideNav = document.getElementsByClassName('side-nav-div')[0];
     if(this.state.isSideNavOpen){
       sideNav.style.animationName = 'side-nav-div-close';
@@ -52,10 +53,21 @@ class App extends Component {
           <Route path='/organisation-panel'
            render={
             () => {
-              return (<OragnisationPanel closeSideNav={this.closeSideNav} />);
+              return (<OragnisationPanel showSideNavHandler={this.showSideNavHandler} closeSideNav={this.closeSideNav} />);
             }
           }
-          exact strict/>
+          exact/>
+          <Route path='/organisation-panel/:section'
+           render={
+            (props) => {
+              return (
+                <OragnisationPanel {...props} 
+                closeSideNav={this.closeSideNav} 
+                showSideNavHandler={this.showSideNavHandler} 
+              />);
+            }
+          }
+          exact />
           <Route path='/group-panel'
            render={
             () => {
