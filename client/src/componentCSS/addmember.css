@@ -1,0 +1,51 @@
+table {
+    width:100%;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
+  table.member tr:nth-child(even) {
+    background-color: #eee;
+  }
+  table.member tr:nth-child(odd) {
+   background-color: #fff;
+  }
+  table.member th {
+    background-color: black;
+    color: white;
+  }
+  .addmember{
+    height: 50px;
+    width:50px;
+    background-size: cover;
+    cursor: pointer;
+  }
+  .button-container{
+    display: flex;
+    justify-content: center;
+  }
+  input[type=text] {
+    width: 430px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 40px;
+  }
+  .search-box{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  .group-field-container{
+    width: 500px;
+    display: flex;
+    justify-content:flex-start;
+    flex-direction: column;
+  }

@@ -2,10 +2,13 @@ class Group{
     constructor(org){
         this.data=org;
     }
-    insertNewGroup(name,organisationId){
+    insertNewGroup(name,organisationId,gid,orgName,about){
         var obj=[{
             name:name,
-            organisationId:organisationId
+            organisationId:organisationId,
+            gid:gid,
+            orgName:orgName,
+            about:about
         }]
         //console.log(obj);
         var {Group}=this.data;
@@ -111,8 +114,9 @@ class Group{
     deleteMember(gId,uid){
         var {Group}=this.data;
         var promise=new Promise((resolve,reject)=>{
-            Group.update({_id:gId},{$pull:{member:{_id:uid}}})
+            Group.update({_id:gId},{$pull:{"member":{"Username":uid}}})
             .then((data)=>{
+                console.log(data)
                 if (data.nModified > 0)
                 resolve({"success":"member deleted successfuly"});
                  else
@@ -123,6 +127,21 @@ class Group{
             })
         });
         return promise;
+    }
+    getMemberByGroupId(gid){
+        var Group=this.data.Group;
+        var promise=new Promise((resolve,reject)=>{
+           Group.findById(gid)
+           .then((usersId)=>{
+            // /console.log(usersId);
+               var objDta=usersId.member;
+               resolve(objDta);
+           })
+           .catch((err)=>{
+               reject({"error":err})
+           })
+        })
+        return promise;  
     }
  
 }
