@@ -34,6 +34,7 @@ export default function Header(props) {
         location === "people" ||
         location === "groups" ||
         location === "events" ||
+        location === "tasks" ||
         location === "requests"
         ? (
           props.isSideNavOpen ? (

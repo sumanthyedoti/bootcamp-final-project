@@ -22,7 +22,6 @@ class App extends Component {
     }));
   }
   showSideNavHandler=()=>{
-    console.log('cc');
     const sideNav = document.getElementsByClassName('side-nav-div')[0];
     if(this.state.isSideNavOpen){
       sideNav.style.animationName = 'side-nav-div-close';
@@ -71,10 +70,21 @@ class App extends Component {
           <Route path='/group-panel'
            render={
             () => {
-              return (<GroupPanel closeSideNav={this.closeSideNav} />);
+              return (<GroupPanel showSideNavHandler={this.showSideNavHandler}  closeSideNav={this.closeSideNav} />);
             }
           }
           exact strict/>
+          <Route path='/group-panel/:section'
+           render={
+            (props) => {
+              return (
+                <GroupPanel {...props} 
+                closeSideNav={this.closeSideNav} 
+                showSideNavHandler={this.showSideNavHandler} 
+              />);
+            }
+          }
+          exact />
         </Switch>
         </>
       </BrowserRouter>
