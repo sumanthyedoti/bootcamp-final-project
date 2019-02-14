@@ -6,8 +6,8 @@ var route=express.Router();
 
 route.post("/auth/group",function(req,res){
     console.log(req.body)
-    var {name,orgId,gid,orgName,about}=req.body;
-        group.insertNewGroup(name,orgId,gid,orgName,about)
+    var {name,orgId,orgName,about}=req.body;
+        group.insertNewGroup(name,orgId,orgName,about)
         .then((data)=>{
           res.send(data)
         })
@@ -72,4 +72,14 @@ route.get("/auth/member/group/:gid",function(req,res){
         res.send(err);
      })
 })
+route.get("/groups/:orgId",function(req,res){
+    group.getOrgGroups(req.params.orgId)
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+
 module.exports=route;

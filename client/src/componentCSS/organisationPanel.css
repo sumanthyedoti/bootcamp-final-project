@@ -1,7 +1,16 @@
 .org{
   display: flex;
 }
-
+.grp-card{
+  padding: 40px;
+  font-size: 30px;
+  background: #ddd;
+  margin: 20px;
+  border:1px solid grey
+}
+.org-groups{
+  display: flex;
+}
 
 @media (min-width: 768px){
   

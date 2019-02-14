@@ -2,11 +2,10 @@ class Group{
     constructor(org){
         this.data=org;
     }
-    insertNewGroup(name,organisationId,gid,orgName,about){
+    insertNewGroup(name,organisationId,orgName,about){
         var obj=[{
             name:name,
             organisationId:organisationId,
-            gid:gid,
             orgName:orgName,
             about:about
         }]
@@ -143,6 +142,21 @@ class Group{
         })
         return promise;  
     }
+    getOrgGroups(orgId){
+        console.log('146',orgId)
+        var Group=this.data.Group;
+        var promise=new Promise((resolve,reject)=>{
+            Group.find({organisationId: orgId})
+            .then((grps)=>{
+                console.log(grps)
+                resolve(grps);
+            })
+            .catch((err)=>{
+                reject({"error":err})
+            })
+         })
+         return promise;
+    }
  
-}
+}   
 module.exports=Group;

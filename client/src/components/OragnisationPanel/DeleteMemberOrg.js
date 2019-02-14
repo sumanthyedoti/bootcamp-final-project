@@ -29,6 +29,7 @@ class AddMemberOrg extends React.Component{
         }
     }
     componentDidMount(){
+        // debugger;
         fetch(`http://localhost:4000/organization/members/${this.props.orgId}`)
         .then((res)=>{
             return res.json()
@@ -38,6 +39,7 @@ class AddMemberOrg extends React.Component{
             this.setState({members:data});
         })
         .catch((err)=>{
+            // debugger;
             console.log(err);
         })
 
@@ -158,8 +160,8 @@ class AddMemberOrg extends React.Component{
 }
 
 AddMemberOrg.defaultProps={
-    orgId:'5c641cbe9da6df34ab2baf51',
-    name:"ram7star"
+    orgId:'5c64dfc5ca90d807445d8dd7',
+    name:"ram1234"
 }
 AddMemberOrg.propTypes = {
     classes: PropTypes.object.isRequired,

@@ -49,3 +49,13 @@ table {
     justify-content:flex-start;
     flex-direction: column;
   }
+.panel-pop{
+  width: 80%;
+  overflow: hidden;
+  display: flex;
+}
+
+.pop-ok{
+  width: 20px;
+  height: 20px;
+}

@@ -28,6 +28,7 @@ export function postAPostAction(text) {
 			})
 				.then(res => res.json())
 				.then((data) =>{
+          console.log(data)
 					dispatch({
 						type: POST_POST,
 						payload: data.success[0],
@@ -50,7 +51,7 @@ export function	getUserPostsAction(text) {
 				mode: "cors",
 				headers: {
 						"Content-Type": "application/json",
-						"uid": "5c6018bb89609f3dddd1b78d",
+						"uid": userData._id,
 				},
 			})
 				.then(res => res.json())

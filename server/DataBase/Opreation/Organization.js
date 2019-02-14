@@ -205,6 +205,7 @@ class Organization{
         })
         return promise;
     }
+    
  
 }
 module.exports=Organization;

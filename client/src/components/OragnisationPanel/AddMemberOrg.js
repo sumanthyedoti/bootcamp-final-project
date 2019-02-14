@@ -132,7 +132,7 @@ class AddMemberOrg extends React.Component{
                                  <td>{d.email}</td>
                                  <td >{d.gender}</td>
                                  <td className="button-container">
-                                 <img className="addmember" src="images/add.png" alt="add member" onClick={()=>{this.addNewMember(d)}}/>
+                                 <img className="addmember" src="/images/add.png" alt="add member" onClick={()=>{this.addNewMember(d)}}/>
                                  </td>
                              </tr>
                          )
@@ -147,13 +147,13 @@ class AddMemberOrg extends React.Component{
           {this.state.loading ? <CircularProgress className={classes.progress} />:
           this.state.success?
           <div>
-              <img className="addmember" src="images/success.png" alt="success"/>
+              <img className="addmember" src="/images/success.png" alt="success"/>
               <div>adding member successfuly</div>
               <button onClick={this.handleClose}>Ok</button>
           </div>
           :
           <div>
-              <img className="addmember" src="images/failed.png" alt="failed"/>
+              <img className="addmember" src="/images/failed.png" alt="failed"/>
               <div>adding member failed</div>
               <button onClick= {this.handleClose}>Ok</button>
           </div>
@@ -165,8 +165,8 @@ class AddMemberOrg extends React.Component{
 }
 
 AddMemberOrg.defaultProps={
-    orgId:'5c641cbe9da6df34ab2baf51',
-    name:"ram7star"
+    orgId:'5c64dfc5ca90d807445d8dd7',
+    name:"ram124"
 }
 AddMemberOrg.propTypes = {
     classes: PropTypes.object.isRequired,

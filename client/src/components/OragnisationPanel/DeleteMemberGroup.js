@@ -36,7 +36,7 @@ class deleteMemberGroup extends React.Component{
         .then((data)=>{
             console.log(data);
             var newmembers=data;
-            debugger;
+            // debugger;
             this.setState({members:newmembers});
         })
         .catch((err)=>{
@@ -77,7 +77,7 @@ class deleteMemberGroup extends React.Component{
             gId:this.props.gid,
             uid:data.Username
         }
-        debugger;
+        // debugger;
        fetch("http://localhost:4000/auth/member/group/remove",{
         method: "POST",
         mode: "cors",
@@ -129,7 +129,7 @@ class deleteMemberGroup extends React.Component{
                                  <td>{d.email}</td>
                                  <td >{d.memberType}</td>
                                  <td className="button-container">
-                                 <img className="addmember" src="images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
+                                 <img className="addmember" src="/images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
                                  </td>
                              </tr>
                          )
@@ -144,13 +144,13 @@ class deleteMemberGroup extends React.Component{
           {this.state.loading ? <CircularProgress className={classes.progress} />:
           this.state.success?
           <div>
-              <img className="addmember" src="images/success.png" alt="success"/>
+              <img className="addmember" src="/images/success.png" alt="success"/>
               <div>delete member successfuly</div>
               <button onClick={this.handleClose}>Ok</button>
           </div>
           :
           <div>
-              <img className="addmember" src="images/failed.png" alt="failed"/>
+              <img className="addmember" src="/images/failed.png" alt="failed"/>
               <div>delete member failed</div>
               <button onClick= {this.handleClose}>Ok</button>
           </div>
