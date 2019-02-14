@@ -205,7 +205,20 @@ class Organization{
         })
         return promise;
     }
-    
+    getOraganisation(orgId){
+        var organization=this.data.OrganizationDetail;
+        var promise=new Promise((resolve,reject)=>{
+           organization.findById(orgId)
+           .then((org)=>{
+               resolve(org);
+           })
+           .catch((err)=>{
+               reject({"error":err})
+           })
+        })
+        return promise;
+
+    }
  
 }
 module.exports=Organization;

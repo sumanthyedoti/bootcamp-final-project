@@ -80,7 +80,7 @@ class AddMemberGroup extends React.Component{
             msg:`${this.props.name} is adding you as a member`
         }
         
-        debugger;
+        // debugger;
        fetch("http://localhost:4000/auth/member/group/addmember",{
         method: "POST",
         mode: "cors",
@@ -94,7 +94,7 @@ class AddMemberGroup extends React.Component{
           return res.json()
       })
       .then((result)=>{
-        debugger;
+        // debugger;
           if(result.success){
               let newmember=this.state.members.filter(d=>d.Username!==data.Username)
              this.setState({loading:false,success:true,members:newmember})

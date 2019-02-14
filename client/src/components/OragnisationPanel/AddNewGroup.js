@@ -25,11 +25,13 @@ class AddNewGroup extends React.Component{
         this.setState({about:e.target.value})
     }
     createNewGroup=()=>{
+      console.log(JSON.parse(localStorage.getItem('org')))
+      const org = localStorage.getItem('org');
         var obj={
           orgId:this.props.orgId,
           orgName:this.props.name,
           name:this.state.gname,
-          gid:this.state.gid,
+          // gid:this.state.gid,
           about:this.state.about
         }
         fetch("http://localhost:4000/auth/group",{
@@ -44,7 +46,8 @@ class AddNewGroup extends React.Component{
               return res.json()
           })
           .then((result)=>{
-              debugger;
+              // debugger;
+              console.log(result)
              if(result.success){
                  var mt='success'
              this.props.enqueueSnackbar('Group added Successfuly!', { mt });
@@ -62,7 +65,6 @@ class AddNewGroup extends React.Component{
     }
     render(){
      let groupsList = null
-      console.log(this.props.orgGroups)
       if(this.props.orgGroups){
         groupsList = this.props.orgGroups.map((grp) => {
           return (<div className='grp-card'>{grp.name}</div>)
