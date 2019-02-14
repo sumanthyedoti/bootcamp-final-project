@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import '../../componentCSS/home.css';
 import Feed from './Feed';
+import SideDiv from '../SideDiv';
 import PostForm from './PostForm';
 import {Redirect} from 'react-router-dom'
 
@@ -85,9 +86,8 @@ class Home extends Component {
           </div>
         </div>
 
-        <div className='side-div section'>
-          <h3 className='side-title'>Recommended for you</h3>
-        </div>
+        <SideDiv />
+        
       </div>
     )
   }

@@ -24,10 +24,25 @@
 .org-name > label {
   margin-left: 7px;
 }
+.create-org-button{
+  width : 80%;
+  margin: 10px 10% !important;
+  background: hsl(249, 53%, 46%) !important;
+  color: whitesmoke !important;
+  outline: none !important;
+}
 .MuiInput-underline-156:after {
   border-bottom: 2px solid hsl(210, 25%, 30%) !important;
 }
 .MuiOutlinedInput-root-163.MuiOutlinedInput-focused-164.MuiOutlinedInput-notchedOutline-170 {
-    border-color:red !important;
+    border-color:rgb(62, 74, 98) !important;
 }
 
+
+
+@media (min-width: 768px){
+  .create-org-button{
+    width : 60%;
+    margin: 10px 20% !important;
+  }
+}

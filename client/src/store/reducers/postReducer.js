@@ -36,7 +36,6 @@ export function postReducer (state=initialState, {type, payload}) {
         }
         return post;
       })
-      console.log('ll', posts)
       return {
         ...state,
         posts: posts,

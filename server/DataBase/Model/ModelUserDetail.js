@@ -61,13 +61,17 @@ var userDetail = mongoose.model('userDetail', new Schema({
         trim: true,
         required: true
     },
+    followers:{
+        type:Array,
+        default:new Array()
+    },
     gender:{
         type:String,
         trim:true,
         required:true,
         validate:{
               validator(gender){
-                    return /^male$|^female$|^other$/.test('other');
+                    return /^male$|^female$|^other$/.test(gender);
                },
                message:"Gender is not correct"
         }
@@ -79,8 +83,10 @@ var userDetail = mongoose.model('userDetail', new Schema({
         required: true
     },
     organization: {
-        type: Array,
-        trim: true
+        type: Array
+    },
+    notification:{
+        type:Array
     }
 }, {versionKey: false}))
 

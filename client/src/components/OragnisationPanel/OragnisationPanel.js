@@ -1,65 +1,36 @@
 import React, { Component } from 'react'
-import {NavLink, Link} from 'react-router-dom';
+import SideNav from './SideNav';
 import '../../componentCSS/organisationPanel.css';
 export default class OragnisationPanel extends Component {
   componentWillUnmount(){
     this.props.closeSideNav();
   }
+  componentDidMount(){
+
+  }
   render() {
+    const section = this.props.match ? this.props.match.params.section : null ;
+    let sectionComponent = null;
+    switch (section) {
+      case 'people':
+        sectionComponent= 'ppl component';
+        break;
+      case 'groups':
+        sectionComponent= 'grp component';
+        break;
+      case 'events':
+        sectionComponent= 'event component';
+        break;
+      default:
+        break;
+    }
     return (
       <div className='container org'>
-        <div className='side-nav'>
-        <ul>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage People'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Groups'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Events'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Requests'}
-            </NavLink>
-          </li>
-        </ul>
-        </div>
-
-        <div className='side-nav-div'>
-        <ul>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage People'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Groups'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Events'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/" className=''>
-              {'Manage Requests'}
-            </NavLink>
-          </li>
-        </ul>
-        </div>
+        <SideNav showSideNavHandler = {this.props.showSideNavHandler}  />  
 
         <div className='main-panel org__main-div'>
-        <p>org panel</p>
+        <p>{sectionComponent}</p>
+        
         </div>
       </div>
     )

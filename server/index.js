@@ -17,6 +17,7 @@ app.use(cors());
 app.use("/",route.userDetail)
 app.use('/',route.Post);
 app.use("/",route.Oraganization);
+app.use("/",route.Group)
 // app.use("/",route.FileUpload);
 
 

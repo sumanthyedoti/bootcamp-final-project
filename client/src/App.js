@@ -54,17 +54,39 @@ class App extends Component {
           <Route path='/organisation-panel'
            render={
             () => {
-              return (<OragnisationPanel closeSideNav={this.closeSideNav} />);
+              return (<OragnisationPanel showSideNavHandler={this.showSideNavHandler} closeSideNav={this.closeSideNav} />);
             }
           }
-          exact strict/>
+          exact/>
+          <Route path='/organisation-panel/:section'
+           render={
+            (props) => {
+              return (
+                <OragnisationPanel {...props} 
+                closeSideNav={this.closeSideNav} 
+                showSideNavHandler={this.showSideNavHandler} 
+              />);
+            }
+          }
+          exact />
           <Route path='/group-panel'
            render={
             () => {
-              return (<GroupPanel closeSideNav={this.closeSideNav} />);
+              return (<GroupPanel showSideNavHandler={this.showSideNavHandler}  closeSideNav={this.closeSideNav} />);
             }
           }
           exact strict/>
+          <Route path='/group-panel/:section'
+           render={
+            (props) => {
+              return (
+                <GroupPanel {...props} 
+                closeSideNav={this.closeSideNav} 
+                showSideNavHandler={this.showSideNavHandler} 
+              />);
+            }
+          }
+          exact />
         </Switch>
         </>
       </BrowserRouter>

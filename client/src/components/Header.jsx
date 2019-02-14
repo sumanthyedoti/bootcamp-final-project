@@ -29,7 +29,14 @@ export default function Header(props) {
   return (
     <>
       <div className="header">
-        {location === "organisation-panel" || location === "group-panel" ? (
+        {location === "organisation-panel" || 
+        location === "group-panel" ||
+        location === "people" ||
+        location === "groups" ||
+        location === "events" ||
+        location === "tasks" ||
+        location === "requests"
+        ? (
           props.isSideNavOpen ? (
             <CloseIcon
               className="side-menu-button"
@@ -47,7 +54,7 @@ export default function Header(props) {
         <div className="container header-container">
           <Link to="/home" className="">
             <div className="logo">
-              <span className="logo__title">CollabG</span>
+              <span className="logo__title">Collab-G</span>
             </div>
           </Link>
           {location === "login" ? null : (
