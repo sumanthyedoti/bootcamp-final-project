@@ -1,34 +1,39 @@
 import { CREATE_NEW } from "../actions/types";
 
-export const newOrgAction = (textArea,orgName,orgAddress,selectedDate) => {
+export const newOrgAction = (textArea,orgName,orgAddress,orgUniqueName,selectedDate) => {
   // console.log("hiii");
-  const orgDetails = {
-    Name: "firstOrg",
-    organisationUniqueName: orgName,
-    Address: orgAddress,
-    LogoPic: "",
+  var orgDetails = {
+    name: orgName,
+    orgId: orgUniqueName,
+    address: orgAddress,
+    logoPic: "",
     coverPic: "",
-    Organisation: "",
-    ETD_Date: selectedDate,
-    FounderDetails: {},
+    organisation: "",
+    etdDate: '2017-9-23',
+    founderDetails: "",
     about:textArea
   };
-  // debugger;
+
+
   return function(dispatch) {
     return new Promise((resolve, reject) => {
+      // debugger
       fetch("http://localhost:4000/auth/organization/", {
         method: "POST",
-        mode: "cors",
+         mode: "cors",  
         headers: {
           "Content-Type": "application/json"
         },
 
         body: JSON.stringify(orgDetails)
       })
-        .then(res => {
+        .then((res) => 
+        
+        {debugger;
           return res.json();
         })
         .then(json => {
+             debugger;
                  if(!json.error){
                    console.log(json.success)
                   //  localStorage.setItem('user', user)
@@ -37,7 +42,7 @@ export const newOrgAction = (textArea,orgName,orgAddress,selectedDate) => {
                        payload: json.success
                    })
                    resolve(json);
-                 }else reject(new Error(json.error))
+                 }else reject(new Error(json.error.message))
         });
       //       .then(json=>{
       //           if(!json.error){

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var OrganizationDetail = mongoose.model('organizationDetail', new Schema({
+var OrganizationDetail = mongoose.model('organizationDetails', new Schema({
     name: {
         type: String,
         trim: true,
