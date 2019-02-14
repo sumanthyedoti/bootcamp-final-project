@@ -24,18 +24,18 @@ class AddMemberOrg extends React.Component{
             members:[],
             searchKey:'',
             loading: false,
-            memberType:'member',
+            memberType:'',
             success:false
         }
     }
     componentDidMount(){
-        fetch(`http://localhost:4000/searchMemberOrg/${this.props.orgId}?searchKey=${this.state.searchKey}`)
+        fetch(`http://localhost:4000/organization/members/${this.props.orgId}`)
         .then((res)=>{
             return res.json()
         })
         .then((data)=>{
             console.log(data);
-            this.setState({members:data.success});
+            this.setState({members:data});
         })
         .catch((err)=>{
             console.log(err);
@@ -54,7 +54,7 @@ class AddMemberOrg extends React.Component{
             .then((data)=>{
                 debugger;
                 console.log(data);
-                this.setState({members:data.success});
+                this.setState({members:data});
             })
             .catch((err)=>{
                 debugger
@@ -68,22 +68,19 @@ class AddMemberOrg extends React.Component{
     handleClose=()=>{
         this.setState({open:false})
     }
-    addNewMember=(data)=>{
+    deleteMember=(data)=>{
         this.setState({loading:true,open:true})
 
         var obj={
             orgId:this.props.orgId,
             uid:data.Username,
-            memberType:this.state.memberType,
-            msg:`${this.props.name} is adding you as a member`
         }
-       fetch("http://localhost:4000/auth/member/addmember",{
+       fetch("http://localhost:4000/auth/member/remove",{
         method: "POST",
         mode: "cors",
         headers: {
           "Content-Type": "application/json"
         },
-
         body: JSON.stringify(obj)
       }) 
       .then((res)=>{
@@ -108,10 +105,6 @@ class AddMemberOrg extends React.Component{
              <div>
                 <div className="search-box">
                    <input type="text" value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
-                   <select onChange={this.selectMemberType} >
-                        <option value="member">Member</option>
-                        <option value="staff">Staff</option>
-                   </select>
                  </div>
                  <table className="member">
                  <thead>
@@ -119,7 +112,7 @@ class AddMemberOrg extends React.Component{
                      <th>Name</th>
                      <th>UserName</th>
                      <th>Email</th>
-                     <th>gender</th>
+                     <th>member type</th>
                      <th></th>
                      </tr>
                  </thead>
@@ -130,9 +123,9 @@ class AddMemberOrg extends React.Component{
                                  <td>{d.Name}</td>
                                  <td>{d.Username}</td>
                                  <td>{d.email}</td>
-                                 <td >{d.gender}</td>
+                                 <td >{d.memberType}</td>
                                  <td className="button-container">
-                                 <img className="addmember" src="images/add.png" alt="add member" onClick={()=>{this.addNewMember(d)}}/>
+                                 <img className="addmember" src="images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
                                  </td>
                              </tr>
                          )
@@ -148,13 +141,13 @@ class AddMemberOrg extends React.Component{
           this.state.success?
           <div>
               <img className="addmember" src="images/success.png" alt="success"/>
-              <div>adding member successfuly</div>
+              <div>delete member successfuly</div>
               <button onClick={this.handleClose}>Ok</button>
           </div>
           :
           <div>
               <img className="addmember" src="images/failed.png" alt="failed"/>
-              <div>adding member failed</div>
+              <div>delete member failed</div>
               <button onClick= {this.handleClose}>Ok</button>
           </div>
          }

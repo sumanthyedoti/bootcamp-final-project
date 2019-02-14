@@ -17,7 +17,7 @@ const styles = theme => ({
     },
   });
   
-class AddMemberOrg extends React.Component{
+class AddMemberGroup extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -29,7 +29,7 @@ class AddMemberOrg extends React.Component{
         }
     }
     componentDidMount(){
-        fetch(`http://localhost:4000/searchMemberOrg/${this.props.orgId}?searchKey=${this.state.searchKey}`)
+        fetch(`http://localhost:4000/searchMemberGroup/${this.props.gid}?searchKey=${this.state.searchKey}`)
         .then((res)=>{
             return res.json()
         })
@@ -47,7 +47,7 @@ class AddMemberOrg extends React.Component{
     }
     searchMember=(e)=>{
          if(e.which===13){
-            fetch(`http://localhost:4000/searchMemberOrg/${this.props.orgId}?searchKey=${this.state.searchKey}`)
+            fetch(`http://localhost:4000/searchMemberGroup/${this.props.gid}?searchKey=${this.state.searchKey}`)
             .then((res)=>{
                 return res.json()
             })
@@ -72,12 +72,16 @@ class AddMemberOrg extends React.Component{
         this.setState({loading:true,open:true})
 
         var obj={
-            orgId:this.props.orgId,
-            uid:data.Username,
+            gId:this.props.gid,
+            Username:data.Username,
+            name:data.Name,
+            email:data.email,
             memberType:this.state.memberType,
             msg:`${this.props.name} is adding you as a member`
         }
-       fetch("http://localhost:4000/auth/member/addmember",{
+        
+        debugger;
+       fetch("http://localhost:4000/auth/member/group/addmember",{
         method: "POST",
         mode: "cors",
         headers: {
@@ -90,6 +94,7 @@ class AddMemberOrg extends React.Component{
           return res.json()
       })
       .then((result)=>{
+        debugger;
           if(result.success){
               let newmember=this.state.members.filter(d=>d.Username!==data.Username)
              this.setState({loading:false,success:true,members:newmember})
@@ -164,11 +169,12 @@ class AddMemberOrg extends React.Component{
     }
 }
 
-AddMemberOrg.defaultProps={
-    orgId:'5c641cbe9da6df34ab2baf51',
-    name:"ram7star"
+AddMemberGroup.defaultProps={
+    gid:'5c64807dad4d014f4af0f17c',
+    gname:'java6',
+    name:"java"
 }
-AddMemberOrg.propTypes = {
+AddMemberGroup.propTypes = {
     classes: PropTypes.object.isRequired,
   };
-export default withStyles(styles)(AddMemberOrg);
+export default withStyles(styles)(AddMemberGroup);

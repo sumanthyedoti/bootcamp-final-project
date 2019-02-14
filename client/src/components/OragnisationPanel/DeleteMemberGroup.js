@@ -17,25 +17,27 @@ const styles = theme => ({
     },
   });
   
-class AddMemberOrg extends React.Component{
+class deleteMemberGroup extends React.Component{
     constructor(props){
         super(props);
         this.state={
             members:[],
             searchKey:'',
             loading: false,
-            memberType:'member',
+            memberType:'',
             success:false
         }
     }
     componentDidMount(){
-        fetch(`http://localhost:4000/searchMemberOrg/${this.props.orgId}?searchKey=${this.state.searchKey}`)
+        fetch(`http://localhost:4000/auth/member/group/${this.props.gid}`)
         .then((res)=>{
             return res.json()
         })
         .then((data)=>{
             console.log(data);
-            this.setState({members:data.success});
+            var newmembers=data;
+            debugger;
+            this.setState({members:newmembers});
         })
         .catch((err)=>{
             console.log(err);
@@ -47,8 +49,8 @@ class AddMemberOrg extends React.Component{
     }
     searchMember=(e)=>{
          if(e.which===13){
-            fetch(`http://localhost:4000/searchMemberOrg/${this.props.orgId}?searchKey=${this.state.searchKey}`)
-            .then((res)=>{
+            fetch(`http://localhost:4000/searchMemberGroup/${this.props.gid}?searchKey=${this.state.searchKey}`)
+             .then((res)=>{
                 return res.json()
             })
             .then((data)=>{
@@ -68,28 +70,27 @@ class AddMemberOrg extends React.Component{
     handleClose=()=>{
         this.setState({open:false})
     }
-    addNewMember=(data)=>{
+    deleteMember=(data)=>{
         this.setState({loading:true,open:true})
 
         var obj={
-            orgId:this.props.orgId,
-            uid:data.Username,
-            memberType:this.state.memberType,
-            msg:`${this.props.name} is adding you as a member`
+            gId:this.props.gid,
+            uid:data.Username
         }
-       fetch("http://localhost:4000/auth/member/addmember",{
+        debugger;
+       fetch("http://localhost:4000/auth/member/group/remove",{
         method: "POST",
         mode: "cors",
         headers: {
           "Content-Type": "application/json"
         },
-
         body: JSON.stringify(obj)
       }) 
       .then((res)=>{
           return res.json()
       })
       .then((result)=>{
+          debugger;
           if(result.success){
               let newmember=this.state.members.filter(d=>d.Username!==data.Username)
              this.setState({loading:false,success:true,members:newmember})
@@ -108,10 +109,6 @@ class AddMemberOrg extends React.Component{
              <div>
                 <div className="search-box">
                    <input type="text" value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
-                   <select onChange={this.selectMemberType} >
-                        <option value="member">Member</option>
-                        <option value="staff">Staff</option>
-                   </select>
                  </div>
                  <table className="member">
                  <thead>
@@ -119,7 +116,7 @@ class AddMemberOrg extends React.Component{
                      <th>Name</th>
                      <th>UserName</th>
                      <th>Email</th>
-                     <th>gender</th>
+                     <th>member type</th>
                      <th></th>
                      </tr>
                  </thead>
@@ -127,12 +124,12 @@ class AddMemberOrg extends React.Component{
                      {this.state.members.map((d)=>{
                          return(
                              <tr key={d.Username}>
-                                 <td>{d.Name}</td>
+                                 <td>{d.name}</td>
                                  <td>{d.Username}</td>
                                  <td>{d.email}</td>
-                                 <td >{d.gender}</td>
+                                 <td >{d.memberType}</td>
                                  <td className="button-container">
-                                 <img className="addmember" src="images/add.png" alt="add member" onClick={()=>{this.addNewMember(d)}}/>
+                                 <img className="addmember" src="images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
                                  </td>
                              </tr>
                          )
@@ -148,13 +145,13 @@ class AddMemberOrg extends React.Component{
           this.state.success?
           <div>
               <img className="addmember" src="images/success.png" alt="success"/>
-              <div>adding member successfuly</div>
+              <div>delete member successfuly</div>
               <button onClick={this.handleClose}>Ok</button>
           </div>
           :
           <div>
               <img className="addmember" src="images/failed.png" alt="failed"/>
-              <div>adding member failed</div>
+              <div>delete member failed</div>
               <button onClick= {this.handleClose}>Ok</button>
           </div>
          }
@@ -164,11 +161,12 @@ class AddMemberOrg extends React.Component{
     }
 }
 
-AddMemberOrg.defaultProps={
-    orgId:'5c641cbe9da6df34ab2baf51',
-    name:"ram7star"
+deleteMemberGroup.defaultProps={
+    gid:'5c64807dad4d014f4af0f17c',
+    gname:'java6',
+    name:"java"
 }
-AddMemberOrg.propTypes = {
+deleteMemberGroup.propTypes = {
     classes: PropTypes.object.isRequired,
   };
-export default withStyles(styles)(AddMemberOrg);
+export default withStyles(styles)(deleteMemberGroup);

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Group = mongoose.model('Group', new Schema({
+var Group = mongoose.model('GroupData', new Schema({
     name: {
         type: String,
         trim: true,
@@ -14,9 +14,26 @@ var Group = mongoose.model('Group', new Schema({
             message:"name is incoreect formate"
         }
     },
+    gid: {
+        type: String,
+        trim: true,
+        minlength:2,
+        maxlength:15,
+        unique: true,
+        required: true,
+        validate:{
+            validator(gid){
+                return /^[a-z0-9A-Z_]{3,30}$/.test(gid)
+               },
+               message:"username is incorrect format"
+        }
+    },
     organisationId: {
         type: String,
         trim: true
+    },
+    orgName:{
+        type:String
     },
     createdAt: {
         type: Date,
@@ -33,7 +50,11 @@ var Group = mongoose.model('Group', new Schema({
     },
     member:{
         type:Array
+    },
+    about:{
+        type:String
     }
+
 }, {versionKey: false}))
 
 module.exports=Group;
