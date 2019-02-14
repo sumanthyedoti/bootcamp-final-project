@@ -72,11 +72,13 @@ export default function Header(props) {
                   className="nav-icon"
                   color="primary"
                 />
-                <PersonIcon
-                  style={styles.navIcon}
-                  className="nav-icon"
-                  color="primary"
-                />
+                <NavLink to="/profile" className="">
+                  <PersonIcon
+                    style={styles.navIcon}
+                    className="nav-icon"
+                    color="primary"
+                  />
+                </NavLink>
               </div>
             </div>
           )}

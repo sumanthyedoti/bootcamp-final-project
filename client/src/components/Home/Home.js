@@ -4,6 +4,7 @@ import '../../componentCSS/home.css';
 import Feed from './Feed';
 import PostForm from './PostForm';
 import {Redirect} from 'react-router-dom'
+
 import {
   signinAction, 
 } from '../../store/actions/userAction';
@@ -17,7 +18,7 @@ import {
 class Home extends Component {
   componentDidMount(){
     this.props.signin();
-    this.props.getUserPosts();
+    if(this.props.posts.length===0)this.props.getUserPosts();
   }
   showImageHandler=(e)=>{
     const photo = document.getElementById('post-photos');

@@ -1,5 +1,10 @@
+
 .container{
-  width: 88%;
+  width: 80%;
+  margin: auto;
+}
+.mobile-container{
+  width: 100%;
   margin: auto;
 }
 .section{
@@ -73,6 +78,10 @@
 @media (min-width: 768px){
   .main-div{
     width: 74%;
+  }
+  .mobile-container{
+    width: 80%;
+    margin: auto;
   }
   .side-div{
     display: inline-block;

@@ -8,7 +8,7 @@ export const signinAction = (email, pwd) => {
   return function (dispatch) {
 		if(localStorage.getItem('userData')){
 			return dispatch({
-				type:"SIGNIN",
+				type:SIGNIN,
 				payload: JSON.parse(localStorage.getItem('userData'))
 			})
 		}

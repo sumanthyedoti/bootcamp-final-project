@@ -6,6 +6,7 @@ import Home from './components/Home/Home.js'
 import Workspace from './components/Workspace/Workspace'
 import OragnisationPanel from './components/OragnisationPanel/OragnisationPanel'
 import GroupPanel from './components/GroupPanel'
+import Profile from './components/Home/profileCard'
 
 import './App.css';
 
@@ -49,6 +50,7 @@ class App extends Component {
           <Route path='/login' component={Login} exact />
           <Route path='/home' component={Home} exact />
           <Route path='/workspace' component={Workspace} exact />
+          <Route path='/profile' component={Profile} exact />
           <Route path='/organisation-panel'
            render={
             () => {

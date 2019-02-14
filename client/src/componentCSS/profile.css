@@ -1,0 +1,57 @@
+.cover-pic {
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  box-shadow: 0px 3px 3px 0px grey;
+  margin-top: 20px;
+
+}
+
+.cover-pic,
+.cover-pic > img {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.profile-pic > img {
+  width: 7rem;
+  /* height: 147px; */
+  background: whitesmoke;
+  position: absolute;
+  bottom: 0;
+  left: 6px;
+  border-radius: 50%;
+  border: 2px solid grey;
+}
+.profile-pic {
+  width: 100%;
+  height: 147px; 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.follower{
+  /* border:1px solid red; */
+  width: 100%;
+  display: flex;
+  /* flex-direction:column; */
+  justify-content: flex-end
+}
+.follower>div {
+  margin-right: 4px;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px){
+.cover-pic > img {
+  width: 100%;
+  height: 345px;
+  /* object-fit: fill; */
+}
+.profile-pic>img {
+  /* height: 248px; */
+  width: 14rem;
+  margin-left: 13px;
+  margin-bottom: 5px;
+}
+}

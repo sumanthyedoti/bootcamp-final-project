@@ -1,22 +1,33 @@
 import React, { Component } from "react";
 import Signin from "./Signin";
 import Signup from "./Signup";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import "../../componentCSS/login.css";
-import {Redirect} from 'react-router-dom';
-import {signinAction} from '../../store/actions/userAction';
+import { Redirect } from "react-router-dom";
+import { signinAction } from "../../store/actions/userAction";
+import ErrorPopup from "../error";
 class Login extends Component {
   state = {
     toggle: "signin",
     isSignedIn: false,
+    open: false,
+    errorMessage:null
+  };
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
   };
 
   onClickSignin = () => {
     let newState = { ...this.state };
-    this.setState((state)=>({
+    this.setState(state => ({
       newState,
       toggle: "signin",
-      isSignedIn: !state.isSignedIn,
+      isSignedIn: !state.isSignedIn
     }));
   };
   onClickSignup = () => {
@@ -27,22 +38,47 @@ class Login extends Component {
     });
   };
 
-  signinHandler=()=>{
-    const email = document.getElementById('filled-email-input');
-    const pwd = document.getElementById('filled-password-input');
-    this.props.signin(email.value, pwd.value)
+  signinHandler = () => {
+    const email = document.getElementById("filled-email-input");
+    const pwd = document.getElementById("filled-password-input");
+    this.props
+      .signin(email.value, pwd.value)
       .then(data => {
-        email.value='';
-        pwd.value='';
-        this.setState((state)=>({
+        email.value = "";
+        pwd.value = "";
+        this.setState(state => ({
           isSignedIn: true
         }));
       })
-      .catch(err => console.log(err.message))
-  }
+      .catch(err => {
+        console.log(err.message);
+        const data = err.message
+        this.setState({
+          errorMessage:data
+        })
+        // this.signinError(data)
+        // debugger;
+        this.handleClickOpen();
+        // return (
+        //   <div>
+        //    dfgghjhjjhj
+        //     <ErrorPopup
+        //       signinError={err.message}
+        //       handleClose={this.handleClose}
+        //       stateData={this.state.open}
+        //     />
+        //   </div>
+        // );
+      });
+  };
+  // signinError = (data)=>{
+  //   console.log(data);
+    
+  //   return data
+  // }
   render() {
-    console.log(this.state)
-    if(this.state.isSignedIn===true) return <Redirect to='/home' />
+    // console.log(this.signinError());
+    if (this.state.isSignedIn === true) return <Redirect to="/home" />;
     return (
       <section className="login-background">
         <div className="login">
@@ -53,18 +89,25 @@ class Login extends Component {
             <div onClick={this.onClickSignup}>Signup</div>
           </div>
         </div>
-        {this.state.toggle === "signin" ? 
-        <Signin signinHandler={this.signinHandler} /> 
-        : 
-        <Signup />}
+        {this.state.toggle === "signin" ? (
+        <div>  <Signin signinHandler={this.signinHandler} />
+          <ErrorPopup 
+              errorMessage={this.state.errorMessage}
+              handleClose={this.handleClose}
+              stateData={this.state.open}
+            /> </div>
+        ) : (
+          <Signup />
+        )}
       </section>
     );
   }
 }
-const mapStateToProps=(state) =>{
-  
-}
-const mapActionsToProps = ({
+const mapStateToProps = state => {};
+const mapActionsToProps = {
   signin: signinAction
-})
-export default connect(mapStateToProps, mapActionsToProps)(Login);
+};
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Login);

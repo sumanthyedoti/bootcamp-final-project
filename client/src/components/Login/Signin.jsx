@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import classNames from "classnames";
 import "../../componentCSS/signin.css";
-import {signinAction} from '../../store/actions/userAction';
+
+// import {signinAction} from '../../store/actions/userAction';
 
 const styles = theme => ({
   textField: {
@@ -76,10 +77,10 @@ class Signin extends Component {
 Signin.propTypes = {
   classes: PropTypes.object.isRequired
 };
-const mapStateToProps=(state) =>{
-  console.log(state)
-}
-const mapActionsToProps = ({
-  signin: signinAction
-})
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Signin));
+// const mapStateToProps=(state) =>{
+//   console.log(state)
+// }
+// const mapActionsToProps = ({
+//   signin: signinAction
+// })
+export default (withStyles(styles)(Signin));
