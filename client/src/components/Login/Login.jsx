@@ -27,7 +27,7 @@ class Login extends Component {
     this.setState(state => ({
       newState,
       toggle: "signin",
-      isSignedIn: !state.isSignedIn
+      // isSignedIn: !state.isSignedIn
     }));
   };
   onClickSignup = () => {
@@ -81,7 +81,15 @@ class Login extends Component {
     if (this.state.isSignedIn === true) return <Redirect to="/home" />;
     return (
       <section className="login-background">
-        <div className="login">
+    
+         <div className="login-text">
+         <h1>
+           Create , Develop , form and Collabrate.<br />
+           <br />
+           Manage your people in the    way you want! 
+         </h1>
+         </div>
+       <div className="login-main">  <div className="login">
           <div className="singin-signup-div">
             <div className="sigin-div" onClick={this.onClickSignin}>
               Signin
@@ -98,7 +106,7 @@ class Login extends Component {
             /> </div>
         ) : (
           <Signup />
-        )}
+        )}</div>
       </section>
     );
   }

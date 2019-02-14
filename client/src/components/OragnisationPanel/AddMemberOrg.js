@@ -107,7 +107,7 @@ class AddMemberOrg extends React.Component{
         return(
              <div>
                 <div className="search-box">
-                   <input type="text" value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
+                   <input type="text" className='group-text-ip' value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
                    <select onChange={this.selectMemberType} >
                         <option value="member">Member</option>
                         <option value="staff">Staff</option>

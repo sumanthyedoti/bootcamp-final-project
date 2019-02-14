@@ -100,10 +100,11 @@ class RegistrationForm extends React.Component {
 
    const orgName=document.getElementById('organisation-name');
    const orgAddress = document.getElementById('organisation-address')
+   const orgUniqueName = document.getElementById('organisation-id')
   //  console.log(this.state.textArea,orgName.value,orgAddress.value,this.state.selectedDate)
 
    this.handleClose()
-   this.props.createOrg(this.state.textArea,orgName.value,orgAddress.value,this.state.selectedDate)
+   this.props.createOrg(this.state.textArea,orgName.value,orgAddress.value,orgUniqueName.value,this.state.selectedDate)
    .then(data => {
     orgName.value='';
     orgAddress.value='';
@@ -122,7 +123,7 @@ class RegistrationForm extends React.Component {
       <div>
         <Button
           variant="outlined"
-          color="secondary"
+          color="primary"
           className='create-org-button'
           onClick={this.handleClickOpen}
         >
@@ -149,6 +150,17 @@ class RegistrationForm extends React.Component {
                   <TextField
                     id="organisation-name"
                     label="org name"
+                    className={classes.textField}
+                    style={{ width: "94%"}}
+                    margin="normal"
+                    variant="outlined"
+                  />
+                </div>
+                <div className="org-name">
+                  <label>Organisation unique Id :</label>
+                  <TextField
+                    id="organisation-id"
+                    label="unique name"
                     className={classes.textField}
                     style={{ width: "94%"}}
                     margin="normal"
