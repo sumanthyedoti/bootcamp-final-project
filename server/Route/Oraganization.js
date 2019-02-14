@@ -56,6 +56,16 @@ route.get("/auth/organization/join/:orgId/:uid",function(req,res){
         res.send(err);
     })
 })
+route.get("/organization/members/:id",function(req,res){
+    console.log(req.params.id);
+  Org.getAllMember(req.params.id)
+  .then((data)=>{
+      res.send(data)
+  })
+  .catch((err)=>{
+      res.send(err);
+  })
+})
 
 route.get("/auth/organization/:orgId",function(req,res){
     Org.getOraganisation(req.params.orgId)

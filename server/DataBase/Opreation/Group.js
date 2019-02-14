@@ -2,13 +2,15 @@ class Group{
     constructor(org){
         this.data=org;
     }
-    insertNewGroup(name,organisationId,orgName,about){
+    insertNewGroup(name,gid,organisationId,orgName,about){
         var obj=[{
             name:name,
+            gid: gid,
             organisationId:organisationId,
             orgName:orgName,
             about:about
         }]
+        console.log('13',obj)
         //console.log(obj);
         var {Group}=this.data;
         var promise=new Promise((resolve,reject)=>{
@@ -143,7 +145,6 @@ class Group{
         return promise;  
     }
     getOrgGroups(orgId){
-        console.log('146',orgId)
         var Group=this.data.Group;
         var promise=new Promise((resolve,reject)=>{
             Group.find({organisationId: orgId})

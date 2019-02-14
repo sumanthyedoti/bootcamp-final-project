@@ -6,8 +6,8 @@ var route=express.Router();
 
 route.post("/auth/group",function(req,res){
     console.log(req.body)
-    var {name,orgId,orgName,about}=req.body;
-        group.insertNewGroup(name,orgId,orgName,about)
+    var {name,gid,orgId,orgName,about}=req.body;
+        group.insertNewGroup(name,gid,orgId,orgName,about)
         .then((data)=>{
           res.send(data)
         })

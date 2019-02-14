@@ -13,6 +13,7 @@ class AddNewGroup extends React.Component{
         super(props);
         this.state={
             gname:'',
+            gid: '',
             about:''
         }
     }
@@ -25,15 +26,15 @@ class AddNewGroup extends React.Component{
         this.setState({about:e.target.value})
     }
     createNewGroup=()=>{
-      console.log(JSON.parse(localStorage.getItem('org')))
-      const org = localStorage.getItem('org');
+      const org = JSON.parse(localStorage.getItem('org'));
         var obj={
-          orgId:this.props.orgId,
-          orgName:this.props.name,
+          orgId:org._id,
+          orgName:org.name,
           name:this.state.gname,
-          // gid:this.state.gid,
+          gid:this.state.gid,
           about:this.state.about
         }
+        console.log(obj)
         fetch("http://localhost:4000/auth/group",{
             method: "POST",
             mode: "cors",
@@ -73,18 +74,29 @@ class AddNewGroup extends React.Component{
         return(
           <>
          <div className="group-field-container" >
-          <TextField
-            id="outlined-email-input"
-            label="Name"
-          // className={classes.textField}
-            onChange={(e)=>{this.setText(e,"gname")}}
-            type="email"
-            name="email"
-            autoComplete="email"
-            margin="normal"
-            variant="outlined"
-          />
-                    <TextField
+            <TextField
+              id="outlined-email-input"
+              label="Name"
+            // className={classes.textField}
+              onChange={(e)=>{this.setText(e,"gname")}}
+              type="email"
+              name="email"
+              autoComplete="email"
+              margin="normal"
+              variant="outlined"
+            />
+              <TextField
+                id="outlined-email-input"
+                label="Unique Name"
+                // className={classes.textField}
+                onChange={(e)=>{this.setText(e,"gid")}}
+                type="email"
+                name="email"
+                autoComplete="email"
+                margin="normal"
+                variant="outlined"
+            />
+            <TextField
               id="outlined-multiline-flexible"
               label="About"
               multiline

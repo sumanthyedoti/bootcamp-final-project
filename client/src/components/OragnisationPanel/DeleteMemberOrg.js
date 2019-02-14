@@ -30,18 +30,22 @@ class AddMemberOrg extends React.Component{
     }
     componentDidMount(){
         // debugger;
-        fetch(`http://localhost:4000/organization/members/${this.props.orgId}`)
-        .then((res)=>{
-            return res.json()
-        })
-        .then((data)=>{
-            console.log(data);
-            this.setState({members:data});
-        })
-        .catch((err)=>{
-            // debugger;
-            console.log(err);
-        })
+        console.log(this.props.orgId);
+        if(this.props.orgId){
+            fetch(`http://localhost:4000/organization/members/${this.props.orgId}`)
+            .then((res)=>{
+                console.log(res)
+                return res.json()
+            })
+            .then((data)=>{
+                console.log('38',data);
+                this.setState({members:data});
+            })
+            .catch((err)=>{
+                // debugger;
+                console.log(err);
+            })
+        }
 
     }
     setSearchText=(e)=>{
@@ -127,7 +131,7 @@ class AddMemberOrg extends React.Component{
                                  <td>{d.email}</td>
                                  <td >{d.memberType}</td>
                                  <td className="button-container">
-                                 <img className="addmember" src="images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
+                                 <img className="addmember" src="/images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
                                  </td>
                              </tr>
                          )
@@ -142,13 +146,13 @@ class AddMemberOrg extends React.Component{
           {this.state.loading ? <CircularProgress className={classes.progress} />:
           this.state.success?
           <div>
-              <img className="addmember" src="images/success.png" alt="success"/>
+              <img className="addmember" src="/images/success.png" alt="success"/>
               <div>delete member successfuly</div>
               <button onClick={this.handleClose}>Ok</button>
           </div>
           :
           <div>
-              <img className="addmember" src="images/failed.png" alt="failed"/>
+              <img className="addmember" src="/images/failed.png" alt="failed"/>
               <div>delete member failed</div>
               <button onClick= {this.handleClose}>Ok</button>
           </div>

@@ -61,7 +61,6 @@ export default class OragnisationPanel extends Component {
     })
   }
   render() {
-    console.log(this.state.orgGroups)
     const {org}  = this.state;
     const section = this.props.match ? this.props.match.params.section : null ;
     let sectionComponent = null;
@@ -70,8 +69,7 @@ export default class OragnisationPanel extends Component {
         sectionComponent= (
           <>
             <AddMemberOrg />
-            <hr />
-            <DeleteMemberOrg />
+            {org? <DeleteMemberOrg orgId = {org._id}/>: null}
           </>
         )
         break;

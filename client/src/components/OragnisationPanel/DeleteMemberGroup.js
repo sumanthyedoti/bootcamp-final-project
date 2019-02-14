@@ -37,7 +37,10 @@ class deleteMemberGroup extends React.Component{
             console.log(data);
             var newmembers=data;
             // debugger;
-            this.setState({members:newmembers});
+            if(!data.error) {
+                console.log(data);
+                this.setState({members:newmembers});
+            }
         })
         .catch((err)=>{
             console.log(err);
@@ -121,7 +124,9 @@ class deleteMemberGroup extends React.Component{
                      </tr>
                  </thead>
                  <tbody>
-                     {this.state.members.map((d)=>{
+                     {console.log(this.state.members)}
+                     {this.state.members ?
+                      this.state.members.map((d)=>{
                          return(
                              <tr key={d.Username}>
                                  <td>{d.name}</td>
@@ -133,7 +138,10 @@ class deleteMemberGroup extends React.Component{
                                  </td>
                              </tr>
                          )
-                     })}
+                     })
+                    :
+                    null
+                    }
                  </tbody>
                  </table>
         <Dialog
@@ -162,9 +170,9 @@ class deleteMemberGroup extends React.Component{
 }
 
 deleteMemberGroup.defaultProps={
-    gid:'5c64807dad4d014f4af0f17c',
-    gname:'java6',
-    name:"java"
+    gid:'5c653f928e4c9961699918b3',
+    gname:'React7',
+    name:"React"
 }
 deleteMemberGroup.propTypes = {
     classes: PropTypes.object.isRequired,

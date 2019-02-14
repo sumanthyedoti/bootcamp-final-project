@@ -94,7 +94,7 @@ class AddMemberGroup extends React.Component{
           return res.json()
       })
       .then((result)=>{
-        // debugger;
+        debugger;
           if(result.success){
               let newmember=this.state.members.filter(d=>d.Username!==data.Username)
              this.setState({loading:false,success:true,members:newmember})
@@ -129,7 +129,8 @@ class AddMemberGroup extends React.Component{
                      </tr>
                  </thead>
                  <tbody>
-                     {this.state.members.map((d)=>{
+                     {this.state.members ? 
+                     this.state.members.map((d)=>{
                          return(
                              <tr key={d.Username}>
                                  <td>{d.Name}</td>
@@ -141,7 +142,10 @@ class AddMemberGroup extends React.Component{
                                  </td>
                              </tr>
                          )
-                     })}
+                     })
+                    :
+                     null
+                    }
                  </tbody>
                  </table>
         <Dialog
@@ -170,9 +174,9 @@ class AddMemberGroup extends React.Component{
 }
 
 AddMemberGroup.defaultProps={
-    gid:'5c64807dad4d014f4af0f17c',
-    gname:'java6',
-    name:"java"
+    gid:'5c653f928e4c9961699918b3',
+    gname:'React7',
+    name:"React"
 }
 AddMemberGroup.propTypes = {
     classes: PropTypes.object.isRequired,
