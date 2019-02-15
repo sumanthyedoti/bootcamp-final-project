@@ -69,7 +69,7 @@ class CustomizedDialogDemo extends React.Component {
   render() {
     return (
       <div>
-        <Button variant="outlined" color="secondary" onClick={this.handleClickOpen}>
+        <Button variant="contained"  onClick={this.handleClickOpen}>
          {this.props.name}
         </Button>
         <Dialog
@@ -83,7 +83,7 @@ class CustomizedDialogDemo extends React.Component {
           {this.props.name}
           </DialogTitle>
           <DialogContent>
-            <Tabs1 />
+            <Tabs1 gid={this.props.gid} gname={this.props.gname} name={this.props.name} />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

@@ -39,7 +39,7 @@ class profileCard extends Component {
                 className={classNames(classes.margin, classes.cssRoot)}
                 style={{ fontWeight: "bolder" }}
               >
-                Follow
+                Logout
               </Button>
             </div>
           </div>
@@ -55,6 +55,7 @@ class profileCard extends Component {
               posts = {this.props.posts} 
               commentHandler={this.commentHandler}
               likeHandler={this.likeHandler}
+              postsFetch = {this.props.postsFetch}
             />
           </div>
 
@@ -66,6 +67,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.reducedUser.user,
     posts: state.reducedPosts.posts,
+    postsFetch: state.reducedPosts.postsFetch,
   }
 }
 

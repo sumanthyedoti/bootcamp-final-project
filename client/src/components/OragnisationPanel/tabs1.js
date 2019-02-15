@@ -48,8 +48,8 @@ class SimpleTabs extends React.Component {
             <Tab label="Delete Members" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><AddMemberGroup /></TabContainer>}
-        {value === 1 && <TabContainer><DeleteMemberGroup orgId = {this.props.orgId} /></TabContainer>}
+        {value === 0 && <TabContainer><AddMemberGroup gname={this.props.gname} name={this.props.name} gid={this.props.gid} /></TabContainer>}
+        {value === 1 && <TabContainer><DeleteMemberGroup gname={this.props.gname} name={this.props.name} gid={this.props.gid} orgId = {this.props.orgId} /></TabContainer>}
       </div>
     );
   }

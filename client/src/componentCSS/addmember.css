@@ -1,8 +1,14 @@
 table {
     width:100%;
+    border-radius: 2px;
+  }
+  .table-div{
+    width: 100%;
+    overflow-x: auto;
+    padding: auto;
   }
   table, th, td {
-    border: 1px solid black;
+    border: 1px solid hsl(220, 23%, 31%);
     border-collapse: collapse;
   }
   th, td {
@@ -16,28 +22,51 @@ table {
    background-color: #fff;
   }
   table.member th {
-    background-color: black;
+    background-color: hsl(220, 23%, 31%);
     color: white;
   }
   .addmember{
-    height: 50px;
-    width:50px;
+    height: 36px;
+    width: 36px;
     background-size: cover;
     cursor: pointer;
+
   }
   .button-container{
     display: flex;
     justify-content: center;
+    border: none;
+    border-top: 1px solid hsl(220, 23%, 31%);
   }
   .group-text-ip {
-    width: 430px;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 10px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
-    padding: 12px 20px 12px 40px;
+    padding: 8px 20px 8px 20px;
   }
+.group-member-type{
+  width: 82px;
+  height: 38px;
+  border: 2px solid hsl(220, 23%, 31%);
+  border-radius: 2px;
+  margin-left: 10px;
+  background: hsl(220, 23%, 31%);
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 14px;
+}
+.group-member-type option{
+  border: 2px solid hsl(220, 23%, 31%);
+  background: whitesmoke;
+  height: 30px;
+  padding: 10px;
+  color: hsl(220, 23%, 31%);
+}
   /* .search-box{
     display: flex;
     justify-content: jus;
@@ -60,4 +89,13 @@ table {
 .pop-ok{
   width: 20px;
   height: 20px;
+}
+
+
+@media (min-width: 768px){
+  .addmember{
+    height: 50px;
+    width: 50px;
+
+  }
 }

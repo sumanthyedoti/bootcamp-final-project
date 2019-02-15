@@ -70,14 +70,14 @@ class AddMemberGroup extends React.Component{
     }
     addNewMember=(data)=>{
         this.setState({loading:true,open:true})
-
+        const org = JSON.parse(localStorage.getItem('org'));
         var obj={
             gId:this.props.gid,
             Username:data.Username,
             name:data.Name,
             email:data.email,
             memberType:this.state.memberType,
-            msg:`${this.props.name} is adding you as a member`
+            msg:`<strong>${org.name}</strong> added you as a ${this.state.memberType} in <strong>${this.props.name}</strong> group`
         }
         
         // debugger;
@@ -113,41 +113,43 @@ class AddMemberGroup extends React.Component{
              <div>
                 <div className="search-box">
                    <input type="text" className='group-text-ip' value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
-                   <select onChange={this.selectMemberType} >
+                   <select className='group-member-type' onChange={this.selectMemberType} >
                         <option value="member">Member</option>
                         <option value="staff">Staff</option>
                    </select>
                  </div>
-                 <table className="member">
-                 <thead>
-                     <tr>
-                     <th>Name</th>
-                     <th>UserName</th>
-                     <th>Email</th>
-                     <th>gender</th>
-                     <th></th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     {this.state.members ? 
-                     this.state.members.map((d)=>{
-                         return(
-                             <tr key={d.Username}>
-                                 <td>{d.Name}</td>
-                                 <td>{d.Username}</td>
-                                 <td>{d.email}</td>
-                                 <td >{d.gender}</td>
-                                 <td className="button-container">
-                                 <img className="addmember" src="/images/add.png" alt="add member" onClick={()=>{this.addNewMember(d)}}/>
-                                 </td>
-                             </tr>
-                         )
-                     })
-                    :
-                     null
-                    }
-                 </tbody>
-                 </table>
+                 <div className='table-div'>
+                    <table className="member">
+                    <thead>
+                        <tr>
+                        <th>Name</th>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th>gender</th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.members ? 
+                        this.state.members.map((d)=>{
+                            return(
+                                <tr key={d.Username}>
+                                    <td>{d.Name}</td>
+                                    <td>{d.Username}</td>
+                                    <td>{d.email}</td>
+                                    <td >{d.gender}</td>
+                                    <td className="button-container">
+                                    <img className="addmember" src="/images/add.png" alt="add member" onClick={()=>{this.addNewMember(d)}}/>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                        :
+                        null
+                        }
+                    </tbody>
+                    </table>
+                 </div>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
