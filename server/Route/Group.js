@@ -130,6 +130,15 @@ route.post("/auth/event/",function(req,res){
       res.send(err);
     })
 })
+route.get("/getTask/:taskId",function(req,res){
+    groupTask.getTaskById(req.params.taskId)
+    .then((result)=>{
+        res.send(result)
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
 
 route.get("/groups/user/:userId",function(req,res){
     group.getUserGroups(req.params.userId)
@@ -140,6 +149,7 @@ route.get("/groups/user/:userId",function(req,res){
         res.send(err);
     })
 })
+
 
 
 module.exports=route;

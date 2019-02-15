@@ -90,8 +90,18 @@ table {
   width: 20px;
   height: 20px;
 }
+.task-view{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 
-
+.task-data{
+   display: flex;
+   justify-content: center;
+}
+.task-card-view{
+  margin:10px;
+}
 @media (min-width: 768px){
   .addmember{
     height: 50px;

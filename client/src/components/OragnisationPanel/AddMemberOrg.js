@@ -75,7 +75,7 @@ class AddMemberOrg extends React.Component{
             orgId:this.props.orgId,
             uid:data.Username,
             memberType:this.state.memberType,
-            msg:`<strong>${org.name}</strong> added you as a ${this.state.memberType} in the organisation`
+            msg:`'${org.name}' added you as a ${this.state.memberType} in the organisation`
         }
        fetch("http://localhost:4000/auth/member/addmember",{
         method: "POST",

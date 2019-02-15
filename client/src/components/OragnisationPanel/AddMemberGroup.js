@@ -77,7 +77,7 @@ class AddMemberGroup extends React.Component{
             name:data.Name,
             email:data.email,
             memberType:this.state.memberType,
-            msg:`<strong>${org.name}</strong> added you as a ${this.state.memberType} in <strong>${this.props.name}</strong> group`
+            msg:`'${org.name}' added you as a ${this.state.memberType} in '${this.props.name}' group`
         }
         
         // debugger;

@@ -51,7 +51,7 @@ class AddMemberGroup extends React.Component{
         const { classes } = this.props;
         return(
              <div>
-                
+                <div className="task-data">
                  <table className="member">
                  <thead>
                      <tr>
@@ -71,9 +71,9 @@ class AddMemberGroup extends React.Component{
                                  <td>{d.Username}</td>
                                  <td>{d.email}</td>
                                  <td >{d.gender}</td>
-                                 <td className="button-container">
+                    
                                  <td><strong>Completed</strong></td>
-                                 </td>
+                                
                              </tr>
                          )
                      })
@@ -82,6 +82,7 @@ class AddMemberGroup extends React.Component{
                     }
                  </tbody>
                  </table>
+                 </div>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

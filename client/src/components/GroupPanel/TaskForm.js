@@ -23,6 +23,7 @@ import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { emphasize } from '@material-ui/core/styles/colorManipulator';
+import TaskCard from './TaskCard';
 
 
 // const suggestions = [
@@ -68,7 +69,7 @@ import { emphasize } from '@material-ui/core/styles/colorManipulator';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 250,
+    height: 50,
   },
   input: {
     display: 'flex',
@@ -280,7 +281,8 @@ class EventForm extends Component {
       groups:[],
       groupvalue:-1,
       selectList:[],
-      groupdata:null
+      groupdata:null,
+      taskList:[]
     };
   }
   handleChange1 = name => data => {
@@ -294,6 +296,19 @@ class EventForm extends Component {
     });
     console.log(this.state);
   };
+  getTask=(gid)=>{
+    fetch(`http://localhost:4000/getTask/${gid}`)
+    .then((res)=>{
+      return res.json()
+    })
+    .then((result)=>{
+      this.setState({taskList:result.success})
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+
+  }
   componentDidMount(){
     const orgGroups = JSON.parse(localStorage.getItem("orgGroups"));
       var ldata=orgGroups.map((d)=>{
@@ -315,6 +330,7 @@ class EventForm extends Component {
    debugger;
    if(indexdata!==-1){
    const orgGroups = JSON.parse(localStorage.getItem("orgGroups"));
+      this.getTask(orgGroups[indexdata]["_id"])
     this.setState({groupdata:orgGroups[indexdata]})
    var members=orgGroups[indexdata].member.map((d)=>{
        return({value:d.Username,label:d.name+` ( username:${d.Username} )`})
@@ -340,7 +356,7 @@ class EventForm extends Component {
    gId:this.state.groupdata["_id"],
    uid:"vishal",
    member:vardat,
-   msg:`new task ${this.state.groupdata.name} is  assigned by ${this.state.groupdata.name}`
+   msg:`New task '${taskTitle}' is  assigned in the group '${this.state.groupdata.name}'`
 }
     console.log(bodydata);
 
@@ -355,6 +371,10 @@ class EventForm extends Component {
     return res.json();
     })
     .then((result)=>{
+      debugger;
+    //  this.state.taskList.push(result.success)
+    this.getTask(bodydata.gId);
+   //   this.setState(this.state)
     console.log(result)
     })
     .catch((err)=>{
@@ -439,6 +459,11 @@ class EventForm extends Component {
           >
             Assign
           </Button>
+        </div>
+        <div   className="task-view">
+        {this.state.taskList.map((d)=>{
+            return <div className="task-card-view"> <TaskCard data={d}/></div>
+        })}
         </div>
       </div>
     );

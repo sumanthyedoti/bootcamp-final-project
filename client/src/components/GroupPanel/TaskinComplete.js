@@ -52,7 +52,7 @@ class AddMemberGroup extends React.Component{
         var obj={
             taskId:this.props.TaskId,
             uid:data.Username,
-            msg:`You are complete task ${this.props.TaskTitle} approve`
+            msg:`The task '${this.props.TaskTitle}' is marked as completed`
         }
         
         // debugger;
@@ -86,7 +86,7 @@ class AddMemberGroup extends React.Component{
         const { classes } = this.props;
         return(
              <div>
-                
+                 <div className="task-data">
                  <table className="member">
                  <thead>
                      <tr>
@@ -117,6 +117,7 @@ class AddMemberGroup extends React.Component{
                     }
                  </tbody>
                  </table>
+                 </div>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

@@ -114,6 +114,20 @@ class Task{
             })
         return promise;
     }
+    getTaskById(gid){
+        var Task=this.data.Task;
+        var promise=new Promise((resolve,reject)=>{
+        Task.find({gId:gid})
+        .then((result)=>{
+          resolve({"success":result})
+        })
+        .catch((err)=>{
+          reject({"error":err})
+        })
+    })
+    return promise;
+      
+    }
     createNewEvent(title,about,startDate,endDate,orgId,msg,groups){
         var userDetail=this.data.userDetail;
         var Event=this.data.Event;
