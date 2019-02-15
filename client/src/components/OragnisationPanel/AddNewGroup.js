@@ -112,7 +112,7 @@ class AddNewGroup extends React.Component{
               variant="outlined"
             />
       
-              <Button variant="contained" onClick={this.createNewGroup} color="primary">
+              <Button variant="contained" onClick={this.createNewGroup} color="primary" style={{backgroundColor:"#01579b"}}>
                     Add New Group
               </Button>
          </div>
