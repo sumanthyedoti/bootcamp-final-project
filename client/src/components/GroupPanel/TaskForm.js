@@ -25,45 +25,45 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { emphasize } from '@material-ui/core/styles/colorManipulator';
 
 
-const suggestions = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
-  { label: 'Argentina' },
-  { label: 'Armenia' },
-  { label: 'Aruba' },
-  { label: 'Australia' },
-  { label: 'Austria' },
-  { label: 'Azerbaijan' },
-  { label: 'Bahamas' },
-  { label: 'Bahrain' },
-  { label: 'Bangladesh' },
-  { label: 'Barbados' },
-  { label: 'Belarus' },
-  { label: 'Belgium' },
-  { label: 'Belize' },
-  { label: 'Benin' },
-  { label: 'Bermuda' },
-  { label: 'Bhutan' },
-  { label: 'Bolivia, Plurinational State of' },
-  { label: 'Bonaire, Sint Eustatius and Saba' },
-  { label: 'Bosnia and Herzegovina' },
-  { label: 'Botswana' },
-  { label: 'Bouvet Island' },
-  { label: 'Brazil' },
-  { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label,
-}));
+// const suggestions = [
+//   { label: 'Afghanistan' },
+//   { label: 'Aland Islands' },
+//   { label: 'Albania' },
+//   { label: 'Algeria' },
+//   { label: 'American Samoa' },
+//   { label: 'Andorra' },
+//   { label: 'Angola' },
+//   { label: 'Anguilla' },
+//   { label: 'Antarctica' },
+//   { label: 'Antigua and Barbuda' },
+//   { label: 'Argentina' },
+//   { label: 'Armenia' },
+//   { label: 'Aruba' },
+//   { label: 'Australia' },
+//   { label: 'Austria' },
+//   { label: 'Azerbaijan' },
+//   { label: 'Bahamas' },
+//   { label: 'Bahrain' },
+//   { label: 'Bangladesh' },
+//   { label: 'Barbados' },
+//   { label: 'Belarus' },
+//   { label: 'Belgium' },
+//   { label: 'Belize' },
+//   { label: 'Benin' },
+//   { label: 'Bermuda' },
+//   { label: 'Bhutan' },
+//   { label: 'Bolivia, Plurinational State of' },
+//   { label: 'Bonaire, Sint Eustatius and Saba' },
+//   { label: 'Bosnia and Herzegovina' },
+//   { label: 'Botswana' },
+//   { label: 'Bouvet Island' },
+//   { label: 'Brazil' },
+//   { label: 'British Indian Ocean Territory' },
+//   { label: 'Brunei Darussalam' },
+// ].map(suggestion => ({
+//   value: suggestion.label,
+//   label: suggestion.label,
+// }));
 
 const styles = theme => ({
   root: {
@@ -276,13 +276,31 @@ class EventForm extends Component {
       selectedDate: new Date(),
       single: null,
       multi: null,
+      suggestions:[],
+      groups:[],
+      groupvalue:-1,
+      selectList:[],
+      groupdata:null
     };
   }
-  handleChange1 = name => value => {
+  handleChange1 = name => data => {
+   // debugger;
+    //alert(JSON.stringify(name));
+    console.log(name)
+   this.state.selectList.push({Username:data.value})
+
     this.setState({
-      [name]: value,
+      [name]: data,
     });
+    console.log(this.state);
   };
+  componentDidMount(){
+    const orgGroups = JSON.parse(localStorage.getItem("orgGroups"));
+      var ldata=orgGroups.map((d)=>{
+        return d.name
+      })
+      this.setState({groups:ldata});
+  }
 
 
   handleChange = event => {
@@ -290,20 +308,64 @@ class EventForm extends Component {
       group: event.target.value
     });
   };
+  selectGroup=(e)=>{
+  
+   var indexdata=parseInt(e.target.value);
+   this.setState({groupvalue:indexdata})
+   debugger;
+   if(indexdata!==-1){
+   const orgGroups = JSON.parse(localStorage.getItem("orgGroups"));
+    this.setState({groupdata:orgGroups[indexdata]})
+   var members=orgGroups[indexdata].member.map((d)=>{
+       return({value:d.Username,label:d.name+` ( username:${d.Username} )`})
+   })
+   this.setState({suggestions:members});
+  }
+  }
   handleDateChange = date => {
     this.setState({ selectedDate: date });
   };
+  submitTask=()=>{
+   var taskTitle=document.getElementById("task-title").value;
+   var taskAbout=document.getElementById("task-about").value;
+   var vardat=this.state.multi.map((d)=>{
+     return {Username:d.value}
+   });
+   console.log(vardat);
+   console.log(this.state.selectedDate);
+   var bodydata={title:taskTitle,
+   topics:"javascript",
+   task:taskAbout,
+   dueDate:this.state.selectedDate,
+   gId:this.state.groupdata["_id"],
+   uid:"vishal",
+   member:vardat,
+   msg:`new task ${this.state.groupdata.name} is  assigned by ${this.state.groupdata.name}`
+}
+    console.log(bodydata);
+
+    fetch("http://localhost:4000/auth/task",{
+    "method":"post",
+    headers:{
+    "Content-Type": "application/json"
+    },
+    body:JSON.stringify(bodydata)
+    })
+    .then((res)=>{
+    return res.json();
+    })
+    .then((result)=>{
+    console.log(result)
+    })
+    .catch((err)=>{
+    debugger;
+    console.log(err)
+    });
+  }
   render() {
     const { classes ,theme} = this.props;
     const { selectedDate } = this.state;
-    const orgGroups = JSON.parse(localStorage.getItem("orgGroups"));
-    const grpListOps = orgGroups.map(grp => {
-      return (
-        <option id={grp.name} value={grp._id}>
-          {grp.name}
-        </option>
-      );
-    });
+
     const selectStyles = {
       input: base => ({
         ...base,
@@ -317,13 +379,24 @@ class EventForm extends Component {
     return (
       <div className="post-form section">
         <div className="post-form__text-div ">
-          <input type="text" placeholder="Title" className="event-form__text" />
+          <input id="task-title" type="text" placeholder="Title" className="event-form__text" />
         </div>
         <div className="post-form__text-div">
           <textarea
+            id="task-about"
             className="post-form__text"
             placeholder="Write details..."
           />
+          <div className="select-group">
+            <select  onChange={this.selectGroup}>
+             <option value="-1">select group</option>
+              {
+                  this.state.groups.map((d,i)=>{
+                    return  <option value={i}>{d}</option>
+                  })
+              }
+            </select>
+          </div>
         </div>
         <div className={classes.root}>
         <NoSsr>
@@ -336,7 +409,7 @@ class EventForm extends Component {
                 shrink: true,
               },
             }}
-            options={suggestions}
+            options={this.state.suggestions}
             components={components}
             value={this.state.multi}
             onChange={this.handleChange1('multi')}
@@ -362,6 +435,7 @@ class EventForm extends Component {
             style={styles.postButton}
             className="post-form_post-button"
             // onClick={props.postHandler}
+            onClick={this.submitTask}
           >
             Assign
           </Button>
@@ -370,4 +444,5 @@ class EventForm extends Component {
     );
   }
 }
+
 export default withStyles(styles,{ withTheme: true })(EventForm);
