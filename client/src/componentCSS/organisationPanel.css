@@ -1,8 +1,52 @@
 .org{
   display: flex;
 }
-
-
+.grp-card{
+  padding: 40px;
+  font-size: 30px;
+  background: hsl(0, 0%, 95%);
+  margin: 20px;
+  border:1px solid grey;
+  border-radius: 2px;
+}
+.org-groups{
+  display: flex;
+}
+.org-profile-card{
+  /* width: 100%; */
+  margin: 10px 20px;
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 2px;
+}
+.org-title{
+  float: none;
+  width: 100%;
+  background: hsl(220, 23%, 31%);
+  text-align: center;
+  padding: 10px;
+  color: whitesmoke;
+  font-size: 24px;
+  border-radius: 2px;
+}
+.org-info{
+  width: 100%;
+  padding: 4px;
+  margin: auto;
+  /* border: 1px solid; */
+}
+.org-info-item{
+  display: flex;
+  padding: 6px;
+}
+.org-info-item p{
+  margin: 2px 14px;
+}
 @media (min-width: 768px){
-  
+  .org-info{
+    width: 60%;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
 }

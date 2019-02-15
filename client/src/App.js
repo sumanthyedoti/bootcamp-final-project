@@ -4,9 +4,12 @@ import Header from './components/Header.jsx'
 import Login from './components/Login/Login.jsx'
 import Home from './components/Home/Home.js'
 import Workspace from './components/Workspace/Workspace'
-import OragnisationPanel from './components/OragnisationPanel/OragnisationPanel'
 import GroupPanel from './components/GroupPanel'
+import Notifications from './components/Notifications'
+import OragnisationPanel from './components/OragnisationPanel/OragnisationPanel'
 import Profile from './components/Home/profileCard'
+// import Tabs from './components/OragnisationPanel/tabs'
+import TabsK from './components/OragnisationPanel/dailogTab';
 
 import './App.css';
 
@@ -50,7 +53,9 @@ class App extends Component {
           <Route path='/login' component={Login} exact />
           <Route path='/home' component={Home} exact />
           <Route path='/workspace' component={Workspace} exact />
+          <Route path='/notifications' component={Notifications} exact />
           <Route path='/profile' component={Profile} exact />
+          <Route path='/TabsK' component={TabsK} exact />
           <Route path='/organisation-panel'
            render={
             () => {

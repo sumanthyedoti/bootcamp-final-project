@@ -1,6 +1,29 @@
 .login-background {
-  background: hsl(210, 25%, 30%);
-  border: 1px solid hsl(210, 25%, 30%);
+  background:rgb(27, 45, 74);
+  height: calc(100vh - 60px);
+  border: 1px solid rgb(27, 45, 74);
+  display: flex;
+  justify-content: space-around
+  /* background-image: url('../assets/login.gif');
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+.login-main{
+  flex-basis: 100%
+}
+.login-text{
+  /* border:1px solid red; */
+  display: none;
+  align-self: center;
+  letter-spacing: 5px;
+  font-size: 1.5rem;  
+  padding:0px  40px;
+  padding-bottom: 170px;
+  color:whitesmoke;
+  
+}
+.login-text> h1{
+  font-weight: 400;
 }
 .singin-signup-div {
   display: flex;
@@ -13,7 +36,7 @@
   text-align: center;
   margin-top: 40px;
   height: 58px;
-  box-shadow: 4px 4px 16px 0px hsl(220, 60%, 20%);
+  box-shadow: 4px 4px 16px 0px rgb(27, 45, 74);
 }
 .login {
   margin-left: 9px;
@@ -26,5 +49,20 @@
   cursor: pointer;
 }
 .sigin-div {
-  border-right: 1px solid hsl(210, 25%, 30%);
+  border-right: 1px solid rgb(27, 45, 74);
+}
+
+@media (min-width: 768px) {
+  .login-text{
+    display: block !important
+  }
+  .login-main{
+    flex-basis: 60%
+  }
+  .header-container{
+
+  }
+  /* .singin-signup-div{
+    margin-top: 50px;
+  } */
 }

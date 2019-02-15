@@ -8,8 +8,8 @@ var groupTask=new Task(schema)
 var route=express.Router();
 route.post("/auth/group",function(req,res){
     console.log(req.body)
-    var {name,orgId,gid,orgName,about}=req.body;
-        group.insertNewGroup(name,orgId,gid,orgName,about)
+    var {name,gid,orgId,orgName,about}=req.body;
+        group.insertNewGroup(name,gid,orgId,orgName,about)
         .then((data)=>{
           res.send(data)
         })
@@ -108,8 +108,17 @@ route.post("/auth/task/complete",function(req,res){
     .catch((err)=>{
         res.send(err);
     })
-
 })
+route.get("/groups/:orgId",function(req,res){
+    group.getOrgGroups(req.params.orgId)
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+
 route.post("/auth/event/",function(req,res){
     var {title,about,startDate,endDate,orgId,msg,groups}=req.body;
     console.log(req.body);
@@ -121,4 +130,16 @@ route.post("/auth/event/",function(req,res){
       res.send(err);
     })
 })
+
+route.get("/groups/user/:userId",function(req,res){
+    group.getUserGroups(req.params.userId)
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+
+
 module.exports=route;

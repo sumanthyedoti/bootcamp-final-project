@@ -1,12 +1,12 @@
 .signin-text-form {
   text-align: center;
-  border: 1px solid hsl(210, 25%, 30%);
+  border: 1px solid rgb(27, 45, 74);
   height:  calc(100vh - 160px );
   margin-left: 9px;
   margin-right: 9px;
 }
 .signin-text-fields {
-  box-shadow: 4px 4px 16px 0px hsl(220, 60%, 20%);
+  box-shadow: 4px 4px 16px 0px rgb(27, 45, 74);
   max-width: 580px;
   min-width: 350px;
   margin: 0 auto;

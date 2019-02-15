@@ -10,6 +10,11 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.login-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .logo__title {
   font-size: 40px;
   line-height: 50px;
@@ -20,11 +25,12 @@
   border-bottom: 2px solid white;
 }
 #work-icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 44px;
   filter: brightness(320%);
   padding: 2px;
-  transform: translateY(8px);
+  margin: 0 10px 6px 10px;
+  transform: translateY(6px);
 
 }
 .nav-div {

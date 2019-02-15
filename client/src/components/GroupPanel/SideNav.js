@@ -1,6 +1,5 @@
 import React from 'react'
 import {NavLink, Link} from 'react-router-dom';
-
 const styles = {
   activeNav: {
     color: 'black',
@@ -39,11 +38,6 @@ export default function SideNav(props) {
           <li>
             <NavLink to="/group-panel" onClick={props.showSideNavHandler} activeStyle={{color: 'hsl(249, 53%, 46%)'}} className=''>
               {'Group Profile'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/group-panel/people" onClick={props.showSideNavHandler} activeStyle={styles.activeNav} className=''>
-              {'Manage People'}
             </NavLink>
           </li>
           <li>

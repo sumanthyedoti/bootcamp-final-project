@@ -36,8 +36,11 @@ class deleteMemberGroup extends React.Component{
         .then((data)=>{
             console.log(data);
             var newmembers=data;
-            debugger;
-            this.setState({members:newmembers});
+            // debugger;
+            if(!data.error) {
+                console.log(data);
+                this.setState({members:newmembers});
+            }
         })
         .catch((err)=>{
             console.log(err);
@@ -77,7 +80,7 @@ class deleteMemberGroup extends React.Component{
             gId:this.props.gid,
             uid:data.Username
         }
-        debugger;
+        // debugger;
        fetch("http://localhost:4000/auth/member/group/remove",{
         method: "POST",
         mode: "cors",
@@ -108,7 +111,7 @@ class deleteMemberGroup extends React.Component{
         return(
              <div>
                 <div className="search-box">
-                   <input type="text" value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
+                   <input type="text" className='group-text-ip' value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
                  </div>
                  <table className="member">
                  <thead>
@@ -121,7 +124,9 @@ class deleteMemberGroup extends React.Component{
                      </tr>
                  </thead>
                  <tbody>
-                     {this.state.members.map((d)=>{
+                     {console.log(this.state.members)}
+                     {this.state.members ?
+                      this.state.members.map((d)=>{
                          return(
                              <tr key={d.Username}>
                                  <td>{d.name}</td>
@@ -129,11 +134,14 @@ class deleteMemberGroup extends React.Component{
                                  <td>{d.email}</td>
                                  <td >{d.memberType}</td>
                                  <td className="button-container">
-                                 <img className="addmember" src="images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
+                                 <img className="addmember" src="/images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
                                  </td>
                              </tr>
                          )
-                     })}
+                     })
+                    :
+                    null
+                    }
                  </tbody>
                  </table>
         <Dialog
@@ -144,13 +152,13 @@ class deleteMemberGroup extends React.Component{
           {this.state.loading ? <CircularProgress className={classes.progress} />:
           this.state.success?
           <div>
-              <img className="addmember" src="images/success.png" alt="success"/>
+              <img className="addmember" src="/images/success.png" alt="success"/>
               <div>delete member successfuly</div>
               <button onClick={this.handleClose}>Ok</button>
           </div>
           :
           <div>
-              <img className="addmember" src="images/failed.png" alt="failed"/>
+              <img className="addmember" src="/images/failed.png" alt="failed"/>
               <div>delete member failed</div>
               <button onClick= {this.handleClose}>Ok</button>
           </div>
@@ -162,9 +170,9 @@ class deleteMemberGroup extends React.Component{
 }
 
 deleteMemberGroup.defaultProps={
-    gid:'5c64807dad4d014f4af0f17c',
-    gname:'java6',
-    name:"java"
+    gid:'5c653f928e4c9961699918b3',
+    gname:'React7',
+    name:"React"
 }
 deleteMemberGroup.propTypes = {
     classes: PropTypes.object.isRequired,

@@ -74,4 +74,15 @@ route.post("/task/member",function(req,res){
     console.log(req.body)
    res.send(req.body);
 })
+
+route.get("/auth/organization/:orgId",function(req,res){
+    Org.getOraganisation(req.params.orgId)
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+
 module.exports=route;

@@ -1,0 +1,14 @@
+.event-form__button-div{
+  padding-bottom: 50px;
+}
+.event-form__text{
+  resize: none;
+  border: 1px solid grey;
+  width: 100%;
+  margin: auto;
+  padding: 10px 10px;
+  border-bottom: none;
+}
+#filled-group{
+  width: 100px;
+}

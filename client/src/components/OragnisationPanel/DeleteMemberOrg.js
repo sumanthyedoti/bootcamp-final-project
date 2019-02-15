@@ -29,17 +29,23 @@ class AddMemberOrg extends React.Component{
         }
     }
     componentDidMount(){
-        fetch(`http://localhost:4000/organization/members/${this.props.orgId}`)
-        .then((res)=>{
-            return res.json()
-        })
-        .then((data)=>{
-            console.log(data);
-            this.setState({members:data});
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        // debugger;
+        console.log(this.props.orgId);
+        if(this.props.orgId){
+            fetch(`http://localhost:4000/organization/members/${this.props.orgId}`)
+            .then((res)=>{
+                console.log(res)
+                return res.json()
+            })
+            .then((data)=>{
+                console.log('38',data);
+                this.setState({members:data});
+            })
+            .catch((err)=>{
+                // debugger;
+                console.log(err);
+            })
+        }
 
     }
     setSearchText=(e)=>{
@@ -104,7 +110,7 @@ class AddMemberOrg extends React.Component{
         return(
              <div>
                 <div className="search-box">
-                   <input type="text" value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
+                   <input type="text" className='group-text-ip' value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
                  </div>
                  <table className="member">
                  <thead>
@@ -125,7 +131,7 @@ class AddMemberOrg extends React.Component{
                                  <td>{d.email}</td>
                                  <td >{d.memberType}</td>
                                  <td className="button-container">
-                                 <img className="addmember" src="images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
+                                 <img className="addmember" src="/images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
                                  </td>
                              </tr>
                          )
@@ -140,13 +146,13 @@ class AddMemberOrg extends React.Component{
           {this.state.loading ? <CircularProgress className={classes.progress} />:
           this.state.success?
           <div>
-              <img className="addmember" src="images/success.png" alt="success"/>
+              <img className="addmember" src="/images/success.png" alt="success"/>
               <div>delete member successfuly</div>
               <button onClick={this.handleClose}>Ok</button>
           </div>
           :
           <div>
-              <img className="addmember" src="images/failed.png" alt="failed"/>
+              <img className="addmember" src="/images/failed.png" alt="failed"/>
               <div>delete member failed</div>
               <button onClick= {this.handleClose}>Ok</button>
           </div>
@@ -159,7 +165,8 @@ class AddMemberOrg extends React.Component{
 
 AddMemberOrg.defaultProps={
     orgId:'5c64dfc5ca90d807445d8dd7',
-    name:"ram7star"
+    // name:"ram7star"
+    name:"ram1234"
 }
 AddMemberOrg.propTypes = {
     classes: PropTypes.object.isRequired,
