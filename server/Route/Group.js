@@ -1,9 +1,11 @@
 var express=require('express');
 var schema=require('../DataBase/Model');
 var {Group}=require('../DataBase/Opreation')
-var group=new Group(schema)
-var route=express.Router();
+var {Task}=require('../DataBase/Opreation')
 
+var group=new Group(schema)
+var groupTask=new Task(schema)
+var route=express.Router();
 route.post("/auth/group",function(req,res){
     console.log(req.body)
     var {name,orgId,gid,orgName,about}=req.body;
@@ -71,5 +73,52 @@ route.get("/auth/member/group/:gid",function(req,res){
      .catch((err)=>{
         res.send(err);
      })
+})
+route.post("/auth/task",function(req,res){
+   var {title,topics,task,dueDate,gId,uid,member,msg}=req.body;
+   console.log(req.data);
+   groupTask.insertNewTask(title,topics,task,dueDate,gId,uid,member,msg)
+   .then((data)=>{
+    res.send(data)
+   })
+   .catch((err)=>{
+     res.send(err);
+   })
+})
+route.get("/task/:taskId",function(req,res){
+    var taskId=req.params.taskId;
+    var access=req.query.access;
+    console.log(taskId+" "+access)
+    groupTask.searchTaskMember(taskId,access)
+    .then((result)=>{
+      res.send(result)
+    })
+    .catch((err)=>{
+     res.send(err);
+    })
+})
+route.post("/auth/task/complete",function(req,res){
+    var {taskId,uid,msg}=req.body;
+
+    console.log(req.body);
+    groupTask.makeCompleteTask(taskId,uid,msg)
+    .then((data)=>{
+        res.send(data);
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+
+})
+route.post("/auth/event/",function(req,res){
+    var {title,about,startDate,endDate,orgId,msg,groups}=req.body;
+    console.log(req.body);
+    groupTask.createNewEvent(title,about,startDate,endDate,orgId,msg,groups)
+    .then((data)=>{
+      res.send(data)
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
 })
 module.exports=route;
