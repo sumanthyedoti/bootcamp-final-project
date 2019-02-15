@@ -87,6 +87,12 @@ var userDetail = mongoose.model('userDetail', new Schema({
     },
     notification:{
         type:Array
+    },
+    eventList:{
+        type:Array
+    },
+    taskList:{
+        type:Array
     }
 }, {versionKey: false}))
 

@@ -27,7 +27,7 @@ class Login extends Component {
     this.setState(state => ({
       newState,
       toggle: "signin",
-      // isSignedIn: !state.isSignedIn
+      isSignedIn:!state.isSignedIn
     }));
   };
   onClickSignup = () => {
