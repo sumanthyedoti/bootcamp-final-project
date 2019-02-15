@@ -8,6 +8,8 @@ import GroupPanel from './components/GroupPanel'
 import Notifications from './components/Notifications'
 import OragnisationPanel from './components/OragnisationPanel/OragnisationPanel'
 import Profile from './components/Home/profileCard'
+// import Tabs from './components/OragnisationPanel/tabs'
+import TabsK from './components/OragnisationPanel/dailogTab';
 
 import './App.css';
 
@@ -53,6 +55,7 @@ class App extends Component {
           <Route path='/workspace' component={Workspace} exact />
           <Route path='/notifications' component={Notifications} exact />
           <Route path='/profile' component={Profile} exact />
+          <Route path='/TabsK' component={TabsK} exact />
           <Route path='/organisation-panel'
            render={
             () => {
