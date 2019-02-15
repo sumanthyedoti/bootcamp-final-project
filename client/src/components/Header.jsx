@@ -57,7 +57,7 @@ export default function Header(props) {
             />
           )
         ) : null}
-        <div className={location === "login" ? "container login-container" : "container header-container"}>
+        <div className={location === "login" ? "login-container" : "container header-container"}>
           <Link to="/home" className="">
             <div className="logo">
               <span className="logo__title">Collab-G</span>

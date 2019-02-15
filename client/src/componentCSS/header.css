@@ -11,9 +11,7 @@
   justify-content: space-around;
 }
 .login-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  margin-left: 47px;
 }
 .logo__title {
   font-size: 40px;

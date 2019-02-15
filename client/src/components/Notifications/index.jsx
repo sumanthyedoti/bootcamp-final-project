@@ -19,7 +19,7 @@ export default class Notifications extends Component {
   }
   componentDidMount(){
     const user = JSON.parse(localStorage.getItem('user'));
-    debugger;
+    // debugger;
     fetch(`http://localhost:4000/notification/${user.username}`)
     .then((res)=>{
        return res.json();
@@ -40,7 +40,7 @@ export default class Notifications extends Component {
  
   }
   render() {
-    debugger;
+    // debugger;
    // console.log(this.state.groups)
     //this.getNotification("ram1");
     return (
@@ -61,14 +61,14 @@ export default class Notifications extends Component {
           day=d+"d "+h+"h "+m+"m";
 
         return ( 
-                <Paper  elevation={1}>
-                <Typography variant="h5" component="h3">
+                <Paper className='notif-card' elevation={1}>
+                <Typography className='notif-msg' variant="h5" component="h3">
                    {n.msg} 
                 </Typography>
                 {/* <Typography component="p">
                   {n.crreateDate.getDay()+"-"+(n.crreateDate.getMonth()+1)+"-"+n.crreateDate.getFullYear()}
                 </Typography> */}
-                <Typography component="p">
+                <Typography className='notif-time' component="p">
                   {day}
                 </Typography>
               </Paper>

@@ -59,9 +59,13 @@
   .login-main{
     flex-basis: 60%
   }
-  .header-container{
-
+  .login-container{
+    justify-content: flex-start;
+    /* margin-right: 60px */
   }
+  /* .header-container{
+    margin-left: 20px;
+  } */
   /* .singin-signup-div{
     margin-top: 50px;
   } */

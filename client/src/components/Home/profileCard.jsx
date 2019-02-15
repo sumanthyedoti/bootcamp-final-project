@@ -4,7 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import {connect} from 'react-redux';
 import "../../componentCSS/profile.css";
-import PostForm from './PostForm'
+import PostForm from './PostForm';
+import {Redirect} from 'react-router-dom';
 import Feed from './Feed'
 import {
   postAPostAction, 
@@ -19,12 +20,26 @@ const styles = theme => ({
   }
 });
 class profileCard extends Component {
+  constructor(){
+    super();
+    this.state={
+      logout: false,
+    }
+  }
   componentDidMount(){
     if(this.props.posts.length===0)this.props.getUserPosts();
   }
+  logout=()=>{
+    this.setState({
+      logout: true,
+    })
+    localStorage.clear();
+  }
   render() {
     const { classes } = this.props;
+    if(this.state.logout) return <Redirect to='/login' />
     return (
+      <>
       <div className="mobile-container">
         <div className="cover-pic">
           <img src="images/cover1.jpeg" />
@@ -35,9 +50,10 @@ class profileCard extends Component {
             <div>
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 className={classNames(classes.margin, classes.cssRoot)}
                 style={{ fontWeight: "bolder" }}
+                onClick={this.logout}
               >
                 Logout
               </Button>
@@ -60,6 +76,7 @@ class profileCard extends Component {
           </div>
 
       </div>
+      </>
     );
   }
 }

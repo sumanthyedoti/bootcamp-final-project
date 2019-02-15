@@ -34,20 +34,56 @@
   width: 100%;
   padding: 4px;
   margin: auto;
-  /* border: 1px solid; */
 }
 .org-info-item{
   display: flex;
   padding: 6px;
 }
 .org-info-item p{
-  margin: 2px 14px;
+  margin: 2px 18px;
 }
+.etd{
+  margin-left: -10px;
+  position: relative;
+  left: -10px;
+  padding-left: 0;
+}
+.grp-card{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.grp-card-section{
+  text-align: center;
+}
+.grp-card-sec-title{
+  font-size: 0.5em;
+  color: grey;
+  margin: 4px;
+  /* border-bottom:2px solid grey */
+  
+}
+.grp-card-sec-detail{
+  margin-top: 10px;
+  font-size: 0.6em;
+}
+
+
+
+
+
+
+
+
+
+
+
 @media (min-width: 768px){
   .org-info{
     width: 60%;
     padding: 10px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-left: 14%;
   }
 
 }
