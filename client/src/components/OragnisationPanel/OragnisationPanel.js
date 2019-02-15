@@ -23,7 +23,35 @@ export function OrgGroups(props) {
   if(props.orgGroups){
     groupsList = props.orgGroups.map((grp) => {
       console.log(grp)
-      return (<div className='grp-card'>{grp.name}</div>)
+      return (
+        <>
+        <div className='grp-card'>
+        
+        <div className='grp-card-section'>
+            <div className='grp-card-sec-title'>
+              Group
+            </div>
+            <div className='grp-card-sec-detail'>{grp.name}</div>
+          </div>
+          <div className='grp-card-section'>
+            <div className='grp-card-sec-title'>
+              Organisation
+            </div>
+            <div className='grp-card-sec-detail'>
+              {grp.orgName}
+            </div>
+          </div>
+          <div className='grp-card-section'>
+            <div className='grp-card-sec-title'>
+              Members
+            </div>
+            <div className='grp-card-sec-detail'>
+              {grp.member.length}
+            </div>
+          </div>
+        </div>
+      </>
+        )
     })
   }
   return (
@@ -121,6 +149,10 @@ export default class OragnisationPanel extends Component {
                   color="action"
                 />
                 <p>{org.members.length}</p>
+              </p>
+              <p className='org-size org-info-item'>
+                <strong style={styles.orgCardIcon}>ETD.</strong>
+                <p className='etd'>{org.etdDate.substring(0,10)}</p>
               </p>
             </div>
 

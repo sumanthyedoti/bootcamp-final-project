@@ -1,11 +1,30 @@
 .workspace{
   display: flex;
 }
-
+.grp-card{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.grp-card-section{
+  text-align: center;
+}
+.grp-card-sec-title{
+  font-size: 0.5em;
+  color: grey;
+  margin: 4px;
+  /* border-bottom:2px solid grey */
+  
+}
+.grp-card-sec-detail{
+  margin-top: 10px;
+  font-size: 0.6em;
+}
 .workspace__main-div{
   border: 1px solid grey;
   min-height: 400px;
   background: #fff;
+  margin-bottom: 40px;
 }
 .panel-btns{
   display: flex;
@@ -24,6 +43,26 @@
   border-radius: 2px;
   background: hsl(220, 23%, 31%);
   color: whitesmoke;
+}
+.notif-card{
+  /* margin: 10px; */
+  padding: 10px;
+  border-radius: 0px !important;
+  border-bottom: 1px solid hsl(0, 0%, 70%);
+  clear: both;
+  font-size: 14px !important;
+  display: flex;
+  flex-direction: column;
+  /* background: hsl(0, 0%, 95%) !important; */
+}
+.notif-msg{
+  font-size: 18px !important;
+}
+.notif-time{
+  display: block;
+  color: grey !important;
+  position: relative;
+  align-self: flex-end;
 }
 
 
