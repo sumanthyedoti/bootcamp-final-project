@@ -82,4 +82,15 @@ route.get("/groups/:orgId",function(req,res){
     })
 })
 
+route.get("/groups/user/:userId",function(req,res){
+    group.getUserGroups(req.params.userId)
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((err)=>{
+        res.send(err);
+    })
+})
+
+
 module.exports=route;

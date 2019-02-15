@@ -11,12 +11,18 @@ import workspaceIcon from "../images/work.png";
 const styles = {
   navIcon: {
     fontSize: "40px",
-    margin: "10px",
+    margin: "10px 10px 0 10px",
     padding: 0,
     color: "whitesmoke"
   },
   menuButton: {
     fontSize: "34px"
+  },
+  activeNav:{
+    // paddingBottom: '10px',
+    borderBottom: '4px solid whitesmoke',
+    marginBottom: '6px',
+
   }
 };
 
@@ -60,26 +66,28 @@ export default function Header(props) {
           {location === "login" ? null : (
             <div className="nav-div">
               <div className="nav-icons">
-                <NavLink to="/home" className="">
+                <NavLink to="/home" className="" title='Home' activeStyle={styles.activeNav}>
                   <HomeIcon
                     style={styles.navIcon}
                     className="nav-icon"
                     color="primary"
                   />
                 </NavLink>
-                <NavLink to="/workspace" className="">
+                <NavLink to="/workspace" title='Worksapce' className="" activeStyle={styles.activeNav}>
                   <img
                     id="work-icon"
                     src={workspaceIcon}
                     alt="workspace icon"
                   />
                 </NavLink>
-                <InboxIcon
-                  style={styles.navIcon}
-                  className="nav-icon"
-                  color="primary"
-                />
-                <NavLink to="/profile" className="">
+                <NavLink to="/notifications" title='Notifications' className="" activeStyle={styles.activeNav}>
+                  <InboxIcon
+                    style={styles.navIcon}
+                    className="nav-icon"
+                    color="primary"
+                  />
+                </NavLink>
+                <NavLink to="/profile" title='Profile' className="" activeStyle={styles.activeNav}>
                   <PersonIcon
                     style={styles.navIcon}
                     className="nav-icon"

@@ -5,6 +5,7 @@ import DeleteMemberOrg from './DeleteMemberOrg'
 import DeleteMemberGroup from './DeleteMemberGroup';
 import AddNewGroup from './AddNewGroup'
 import AddMemberGroup from './AddMemberGroup'
+import AddEvent from './AddEvent'
 import '../../componentCSS/organisationPanel.css';
 import PlaceIcon from "@material-ui/icons/Place";
 import PeopleIcon from "@material-ui/icons/People";
@@ -58,6 +59,7 @@ export default class OragnisationPanel extends Component {
       this.setState({
         orgGroups: data,
       })
+      localStorage.setItem('orgGroups', JSON.stringify(data));
     })
   }
   render() {
@@ -83,7 +85,9 @@ export default class OragnisationPanel extends Component {
         )
         break;
       case 'events':
-        sectionComponent= 'event component';
+        sectionComponent= (
+            <AddEvent  />
+        );
         break;
       default:
         sectionComponent= (

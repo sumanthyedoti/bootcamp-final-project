@@ -158,6 +158,19 @@ class Group{
          })
          return promise;
     }
- 
+    getUserGroups(userId){
+        var Group=this.data.Group;
+        var promise=new Promise((resolve,reject)=>{
+            Group.find({'member.Username': userId})
+            .then((grps)=>{
+                resolve(grps);
+            })
+            .catch((err)=>{
+                reject({"error":err})
+            })
+         })
+         return promise;
+    }
+    
 }   
 module.exports=Group;

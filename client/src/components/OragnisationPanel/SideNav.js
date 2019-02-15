@@ -35,11 +35,6 @@ export default function SideNav(props) {
                 {'Manage Events'}
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/organisation-panel/requests" activeStyle={styles.activeNav} className=''>
-                {'Manage Requests'}
-              </NavLink>
-            </li>
           </ul>
         </div>
 
@@ -63,11 +58,6 @@ export default function SideNav(props) {
           <li>
             <NavLink to="/organisation-panel/events" onClick={props.showSideNavHandler}  activeStyle={styles.activeNav} className=''>
               {'Manage Events'}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/organisation-panel/requests" onClick={props.showSideNavHandler}  activeStyle={styles.activeNav} className=''>
-              {'Manage Requests'}
             </NavLink>
           </li>
         </ul>

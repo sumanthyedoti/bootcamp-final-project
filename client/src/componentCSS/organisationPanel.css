@@ -4,9 +4,10 @@
 .grp-card{
   padding: 40px;
   font-size: 30px;
-  background: #eee;
+  background: hsl(0, 0%, 95%);
   margin: 20px;
-  border:1px solid grey
+  border:1px solid grey;
+  border-radius: 2px;
 }
 .org-groups{
   display: flex;

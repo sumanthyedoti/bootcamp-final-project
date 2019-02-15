@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {NavLink, Link} from 'react-router-dom';
 import SideNav from './SideNav';
 import '../../componentCSS/groupPanel.css';
+import ManageEvents from './ManageEvents'
+import ManageTasks from './ManageTasks'
 
 export default class GroupPanel extends Component {
   componentWillUnmount(){
@@ -11,14 +13,19 @@ export default class GroupPanel extends Component {
     const section = this.props.match ? this.props.match.params.section : null ;
     let sectionComponent = null;
     switch (section) {
-      case 'people':
-        sectionComponent= 'ppl component';
-        break;
       case 'tasks':
-        sectionComponent= 'task component';
+        sectionComponent= (
+          <>
+            <ManageTasks />
+          </>
+        );
         break;
       case 'events':
-        sectionComponent= 'event component';
+        sectionComponent= (
+          <>
+            <ManageEvents />
+          </>
+        );
         break;
       default:
         break;
