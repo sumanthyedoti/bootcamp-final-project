@@ -7,6 +7,8 @@ import Workspace from './components/Workspace/Workspace'
 import OragnisationPanel from './components/OragnisationPanel/OragnisationPanel'
 import GroupPanel from './components/GroupPanel'
 import Profile from './components/Home/profileCard'
+// import Tabs from './components/OragnisationPanel/tabs'
+import TabsK from './components/OragnisationPanel/dailogTab';
 
 import './App.css';
 
@@ -51,6 +53,7 @@ class App extends Component {
           <Route path='/home' component={Home} exact />
           <Route path='/workspace' component={Workspace} exact />
           <Route path='/profile' component={Profile} exact />
+          <Route path='/TabsK' component={TabsK} exact />
           <Route path='/organisation-panel'
            render={
             () => {

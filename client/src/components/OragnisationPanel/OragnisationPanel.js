@@ -9,6 +9,7 @@ import '../../componentCSS/organisationPanel.css';
 import PlaceIcon from "@material-ui/icons/Place";
 import PeopleIcon from "@material-ui/icons/People";
 import InfoIcon from "@material-ui/icons/Info";
+import SimpleTabs from './tabs';
 
 const styles = {
   orgCardIcon: {
@@ -68,8 +69,9 @@ export default class OragnisationPanel extends Component {
       case 'people':
         sectionComponent= (
           <>
-            <AddMemberOrg />
-            {org? <DeleteMemberOrg orgId = {org._id}/>: null}
+            {/* <AddMemberOrg />
+            {org? <DeleteMemberOrg orgId = {org._id}/>: null} */}
+            {org? <SimpleTabs orgId = {org._id}/>: null}
           </>
         )
         break;
@@ -77,8 +79,8 @@ export default class OragnisationPanel extends Component {
         sectionComponent= (
           <>
           <AddNewGroup orgGroups={this.state.orgGroups} />
-          <AddMemberGroup />
-          <DeleteMemberGroup />
+          {/* <AddMemberGroup />
+          <DeleteMemberGroup /> */}
           </>
         )
         break;

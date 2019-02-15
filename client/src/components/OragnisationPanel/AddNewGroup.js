@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../../componentCSS/addmember.css'
 import { SnackbarProvider, withSnackbar } from 'notistack';
+import DailogTab from './dailogTab';
+
 
 class AddNewGroup extends React.Component{
     constructor(props){
@@ -68,7 +70,7 @@ class AddNewGroup extends React.Component{
      let groupsList = null
       if(this.props.orgGroups){
         groupsList = this.props.orgGroups.map((grp) => {
-          return (<div className='grp-card'>{grp.name}</div>)
+          return (<div className='grp-card'><DailogTab name={grp.name} /></div>)
         })
       }
         return(

@@ -38,17 +38,17 @@ table {
     background-color: white;
     padding: 12px 20px 12px 40px;
   }
-  .search-box{
+  /* .search-box{
     display: flex;
-    justify-content: center;
+    justify-content: jus;
     padding: 6px;
-  }
-  .group-field-container{
+  } */
+  /* .group-field-container{
     width: 500px;
     display: flex;
     justify-content:flex-start;
     flex-direction: column;
-  }
+  } */
 
   
 .panel-pop{
