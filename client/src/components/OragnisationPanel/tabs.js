@@ -42,7 +42,7 @@ class SimpleTabs extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" style={{backgroundColor:"blue"}}>
+        <AppBar position="static" style={{backgroundColor:"rgb(27, 45, 74)"}}>
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Add Members" />
             <Tab label="Delete Members" />

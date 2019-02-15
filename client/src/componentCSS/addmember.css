@@ -8,8 +8,12 @@ table {
     padding: auto;
   }
   table, th, td {
-    border: 1px solid hsl(220, 23%, 31%);
+    border: 1px solid rgb(27, 45, 74);
     border-collapse: collapse;
+    
+  }
+  th{
+    font-size:1em;
   }
   th, td {
     padding: 0px 10px;
@@ -22,7 +26,7 @@ table {
    background-color: #fff;
   }
   table.member th {
-    background-color: hsl(220, 23%, 31%);
+    background-color: rgb(27, 45, 74);
     color: white;
   }
   .addmember{
@@ -36,7 +40,7 @@ table {
     display: flex;
     justify-content: center;
     border: none;
-    border-top: 1px solid hsl(220, 23%, 31%);
+    border-top: 1px solid rgb(27, 45, 74);
   }
   .group-text-ip {
     width: 60%;
@@ -52,32 +56,31 @@ table {
 .group-member-type{
   width: 82px;
   height: 38px;
-  border: 2px solid hsl(220, 23%, 31%);
+  border: 2px solid rgb(27, 45, 74);
   border-radius: 2px;
   margin-left: 10px;
-  background: hsl(220, 23%, 31%);
+  background: rgb(27, 45, 74);
   color: whitesmoke;
   font-weight: bold;
   font-size: 14px;
 }
 .group-member-type option{
-  border: 2px solid hsl(220, 23%, 31%);
+  border: 2px solid rgb(27, 45, 74);
   background: whitesmoke;
   height: 30px;
   padding: 10px;
-  color: hsl(220, 23%, 31%);
+  color: rgb(27, 45, 74);
 }
   /* .search-box{
     display: flex;
     justify-content: jus;
     padding: 6px;
   } */
-  /* .group-field-container{
-    width: 500px;
-    display: flex;
-    justify-content:flex-start;
-    flex-direction: column;
-  } */
+  .group-field-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+  }
 
   
 .panel-pop{
