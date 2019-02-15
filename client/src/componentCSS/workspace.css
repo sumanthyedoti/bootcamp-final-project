@@ -4,14 +4,33 @@
 
 .workspace__main-div{
   border: 1px solid grey;
-  min-height: 100px;
+  min-height: 400px;
   background: #fff;
 }
-.notif-text strong{
-  font-weight: bold;
+.panel-btns{
+  display: flex;
+  width: 80%;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.panel-btn{
+  width: 48%;
+  min-width: 100px;
+  margin: 2px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  padding: 8px 2px;
+  border-radius: 2px;
+  background: hsl(220, 23%, 31%);
+  color: whitesmoke;
 }
 
 
 @media (min-width: 768px){
-  
+  .workspace__main-div{
+    border: 1px solid grey;
+    min-height: 400px;
+    background: #fff;
+  }
 }

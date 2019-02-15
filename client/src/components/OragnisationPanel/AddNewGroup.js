@@ -70,7 +70,8 @@ class AddNewGroup extends React.Component{
      let groupsList = null
       if(this.props.orgGroups){
         groupsList = this.props.orgGroups.map((grp) => {
-          return (<div className='grp-card'><DailogTab name={grp.name} /></div>)
+          console.log(grp)
+          return (<div className='grp-card'><DailogTab gid={grp._id} gname={grp.gid} name={grp.name} /></div>)
         })
       }
         return(
