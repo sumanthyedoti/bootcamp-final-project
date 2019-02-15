@@ -165,6 +165,7 @@ class AddMemberOrg extends React.Component{
 
 AddMemberOrg.defaultProps={
     orgId:'5c64dfc5ca90d807445d8dd7',
+    // name:"ram7star"
     name:"ram1234"
 }
 AddMemberOrg.propTypes = {

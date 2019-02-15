@@ -66,6 +66,14 @@ route.get("/organization/members/:id",function(req,res){
       res.send(err);
   })
 })
+route.post("/task/group",function(req,res){
+    console.log(req.body)
+   res.send(req.body);
+})
+route.post("/task/member",function(req,res){
+    console.log(req.body)
+   res.send(req.body);
+})
 
 route.get("/auth/organization/:orgId",function(req,res){
     Org.getOraganisation(req.params.orgId)
