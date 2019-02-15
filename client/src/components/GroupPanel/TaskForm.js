@@ -327,17 +327,6 @@ class EventForm extends Component {
         </div>
         <div className={classes.root}>
         <NoSsr>
-          {/* <Select
-            classes={classes}
-            styles={selectStyles}
-            options={suggestions}
-            components={components}
-            value={this.state.single}
-            onChange={this.handleChange1('single')}
-            placeholder="Search a country (start with a)"
-            isClearable
-          />
-          <div className={classes.divider} /> */}
           <Select
             classes={classes}
             styles={selectStyles}

@@ -22,10 +22,7 @@ const styles = {
     padding: 0,
     float: "left",
     color: "hsl(218, 59%, 44%)",
-    cursor: "pointer",
-    grid: {
-      width: "60%"
-    }
+    cursor: "pointer"
   },
   postButton: {
     margin: "4px",
@@ -33,9 +30,13 @@ const styles = {
     borderRadius: "2px",
     fontWeight: "bold",
     backgroundColor: "hsl(218, 59%, 44%)"
+  },
+
+  grid: {
+    width: "60%"
   }
 };
- class EventForm extends Component {
+class EventForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -107,4 +108,4 @@ const styles = {
     );
   }
 }
-export default withStyles(styles)(EventForm)
+export default withStyles(styles)(EventForm);
