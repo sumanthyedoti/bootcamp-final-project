@@ -85,7 +85,7 @@ route.post("/auth/task",function(req,res){
      res.send(err);
    })
 })
-route.get("/task/:taskId",function(req,res){
+route.get("/taskmember/:taskId",function(req,res){
     var taskId=req.params.taskId;
     var access=req.query.access;
     console.log(taskId+" "+access)
@@ -97,7 +97,7 @@ route.get("/task/:taskId",function(req,res){
      res.send(err);
     })
 })
-route.post("/auth/task/complete",function(req,res){
+route.post("/auth/taskmember/complete",function(req,res){
     var {taskId,uid,msg}=req.body;
 
     console.log(req.body);

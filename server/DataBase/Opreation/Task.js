@@ -55,9 +55,10 @@ class Task{
        var promise=new Promise((resolve,reject)=>{
         Task.findById(taskId)
         .then(async(data)=>{
-           
-            var userdata=data.member;
-            console.log(data.member);
+            console.log("ram")
+            console.log(data)
+            var userdata;;
+         //   console.log(data.member);
             if(accessType==="member"){
                userdata=data.member;
             }
@@ -93,6 +94,7 @@ class Task{
         var Task=this.data.Task;
         var promise=new Promise(async(resolve,reject)=>{
         try{
+            console.log("complete")
             var obj1=  await  Task.update({_id:taskId},{$pull:{"incompeteMember":{Username:Username}}});
             var obj2=  await  Task.update({_id:taskId},{$addToSet:{"completeMember":{Username:Username}}});
             var notification={

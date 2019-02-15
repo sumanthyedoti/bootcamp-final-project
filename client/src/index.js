@@ -11,6 +11,8 @@ import App from './App';
 // import DeleteMemberGroup from './components/OragnisationPanel/DeleteMemberGroup'
 
 // import Test from './components/OragnisationPanel/OrganizationTask';
+import TaskInCompplet from './components/GroupPanel/TaskinComplete'
+import TaskCompplet from './components/GroupPanel/TaskComplete'
 ReactDOM.render(
   <Provider store={store}>
     <App />
@@ -18,5 +20,5 @@ ReactDOM.render(
   , document.getElementById('root')
 );
 
-//  ReactDOM.render(<div><Test/></div>,document.getElementById('root'));
+ // ReactDOM.render(<div><TaskInCompplet/><TaskCompplet/></div>,document.getElementById('root'));
 
