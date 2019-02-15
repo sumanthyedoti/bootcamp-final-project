@@ -39,7 +39,7 @@ class profileCard extends Component {
                 className={classNames(classes.margin, classes.cssRoot)}
                 style={{ fontWeight: "bolder" }}
               >
-                Follow
+                Logout
               </Button>
             </div>
           </div>

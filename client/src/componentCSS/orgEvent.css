@@ -1,7 +1,12 @@
-.event-form__button-div{
-  padding-bottom: 50px;
+.event-form__button-div {
+  /* padding-bottom: 65px; */
+  display: flex;
+  flex-direction: column;
 }
-.event-form__text{
+.event-form__button-div ~ button{
+  margin-top: 40px;
+}
+.event-form__text {
   resize: none;
   border: 1px solid grey;
   width: 100%;
@@ -9,6 +14,6 @@
   padding: 10px 10px;
   border-bottom: none;
 }
-#filled-group{
+#filled-group {
   width: 100px;
 }
