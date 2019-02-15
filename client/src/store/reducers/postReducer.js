@@ -2,6 +2,7 @@ import  {POST_POST, GET_POSTS, LIKE_POST, DISLIKE_POST} from '../actions/types';
 
 const initialState = {
   posts: [],
+  postsFetch: false,
 }
 
 export function postReducer (state=initialState, {type, payload}) {
@@ -12,7 +13,7 @@ export function postReducer (state=initialState, {type, payload}) {
       payload.isLiked = payload.likedBy.indexOf(userData.Username) !== -1 ? true : false;
       return {
         ...state,
-        posts: [...state.posts, payload],
+        posts: [payload,...state.posts],
       }
     case GET_POSTS:
       let payloadX = [];
@@ -25,6 +26,7 @@ export function postReducer (state=initialState, {type, payload}) {
       return {
         ...state,
         posts: [...state.posts, ...payloadX],
+        postsFetch: true,
       }
     case LIKE_POST: 
       console.log(state.posts)

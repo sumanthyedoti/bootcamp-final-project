@@ -31,12 +31,14 @@ export default class Workspace extends Component {
           <div>
             <RegistrationForm />
           </div>
-          <Link to="/organisation-panel" className=''>
-            {'go to org'}
-          </Link> <br/>
-          <Link to="/group-panel" className=''>
-            {'go to grp'}
-          </Link>
+          <div className='panel-btns'>
+            <Link to="/organisation-panel" className='panel-btn'>
+              {'go to org'}
+            </Link> <br/>
+            <Link to="/group-panel" className='panel-btn'>
+              {'go to grp'}
+            </Link>
+          </div>
           <UserGroups userGroups = {this.state.groups} />
         </div>
         <SideDiv />

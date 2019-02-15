@@ -80,6 +80,7 @@ class Home extends Component {
           <div className='section'>
             <Feed 
               posts = {this.props.posts} 
+              postsFetch = {this.props.postsFetch} 
               commentHandler={this.commentHandler}
               likeHandler={this.likeHandler}
             />
@@ -96,6 +97,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.reducedUser.user,
     posts: state.reducedPosts.posts,
+    postsFetch: state.reducedPosts.postsFetch,
   }
 }
 

@@ -42,7 +42,7 @@
 
 @media (min-width: 768px){
   .create-org-button{
-    width : 60%;
-    margin: 10px 20% !important;
+    width : 80%;
+    margin: 10px 10% !important;
   }
 }
