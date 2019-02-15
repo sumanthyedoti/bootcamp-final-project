@@ -113,37 +113,39 @@ class deleteMemberGroup extends React.Component{
                 <div className="search-box">
                    <input type="text" className='group-text-ip' value={this.state.searchKey} onChange={this.setSearchText} onKeyUp={this.searchMember} />
                  </div>
-                 <table className="member">
-                 <thead>
-                     <tr>
-                     <th>Name</th>
-                     <th>UserName</th>
-                     <th>Email</th>
-                     <th>member type</th>
-                     <th></th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     {console.log(this.state.members)}
-                     {this.state.members ?
-                      this.state.members.map((d)=>{
-                         return(
-                             <tr key={d.Username}>
-                                 <td>{d.name}</td>
-                                 <td>{d.Username}</td>
-                                 <td>{d.email}</td>
-                                 <td >{d.memberType}</td>
-                                 <td className="button-container">
-                                 <img className="addmember" src="/images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
-                                 </td>
-                             </tr>
-                         )
-                     })
-                    :
-                    null
-                    }
-                 </tbody>
-                 </table>
+                 <div className='table-div'>
+                    <table className="member">
+                    <thead>
+                        <tr>
+                        <th>Name</th>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th>member type</th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {console.log(this.state.members)}
+                        {this.state.members ?
+                        this.state.members.map((d)=>{
+                            return(
+                                <tr key={d.Username}>
+                                    <td>{d.name}</td>
+                                    <td>{d.Username}</td>
+                                    <td>{d.email}</td>
+                                    <td >{d.memberType}</td>
+                                    <td className="button-container">
+                                    <img className="addmember" src="/images/delete.png" alt="delete member" onClick={()=>{this.deleteMember(d)}}/>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                        :
+                        null
+                        }
+                    </tbody>
+                    </table>
+                 </div>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

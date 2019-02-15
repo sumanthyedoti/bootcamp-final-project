@@ -2,15 +2,16 @@
   display: flex;
 }
 .grp-card{
-  padding: 40px;
+  padding: 20px;
   font-size: 30px;
   background: hsl(0, 0%, 95%);
-  margin: 20px;
+  margin: 40px;
   border:1px solid grey;
   border-radius: 2px;
 }
 .org-groups{
   display: flex;
+  justify-content: flex-start;
 }
 .org-profile-card{
   /* width: 100%; */
