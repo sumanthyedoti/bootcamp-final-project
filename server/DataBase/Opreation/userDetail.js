@@ -131,6 +131,50 @@ class Detail{
         })
         return promise;
     }
+    getNotification(uid){
+        var userDetail=this.data.userDetail;
+        var promise=new Promise((resolve,reject)=>{
+            userDetail.find({Username:uid})
+            .then((result)=>{
+                resolve({"success":result})
+            }) 
+            .catch((err)=>{
+                reject({"error":err});
+            })
+        })
+        return promise;
+    }
+    getTask(uid){
+        var Task=this.data.Task;
+        var userDetail=this.data.userDetail;
+        var promise=new Promise((resolve,reject)=>{
+            userDetail.find({Username:uid})
+            .then(async(result)=>{
+                var task=await Task.find({_id:result[0].taskList})
+                resolve({"success":task});
+            }) 
+            .catch((err)=>{
+                reject({"error":err});
+            })
+        })
+        return promise;
+    }
+    getEvent(uid){
+        var Event=this.data.Event;
+        var userDetail=this.data.userDetail;
+        var promise=new Promise((resolve,reject)=>{
+            userDetail.find({Username:uid})
+            .then(async(result)=>{
+                console.log(result);
+                var task=await Event.find({_id:result[0].eventList})
+                resolve({"success":task});
+            }) 
+            .catch((err)=>{
+                reject({"error":err});
+            })
+        })
+        return promise; 
+    }
 }
 
 module.exports=Detail;

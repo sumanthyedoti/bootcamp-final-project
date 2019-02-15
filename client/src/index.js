@@ -9,13 +9,14 @@ import App from './App';
 // import AddNewGroup from './components/OragnisationPanel/AddNewGroup';
 // import AddMemberGroup from './components/OragnisationPanel/AddMemberGroup';
 // import DeleteMemberGroup from './components/OragnisationPanel/DeleteMemberGroup'
-import Test from './components/OragnisationPanel/OrganizationTask';
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>
-//   , document.getElementById('root')
-// );
 
- ReactDOM.render(<div><Test/></div>,document.getElementById('root'));
+// import Test from './components/OragnisationPanel/OrganizationTask';
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+  , document.getElementById('root')
+);
+
+//  ReactDOM.render(<div><Test/></div>,document.getElementById('root'));
 

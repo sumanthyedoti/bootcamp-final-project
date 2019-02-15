@@ -52,5 +52,33 @@ route.get("/searchMemberGroup/:gId",function(req,res){
         res.send(err);
     })
 })
+route.get("/notification/:uid",function(req,res){
+    UserSchema.getNotification(req.params.uid)
+    .then((result)=>{
+       res.send(result)
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
+})
+route.get("/task/:uid",function(req,res){
+    UserSchema.getTask(req.params.uid)
+    .then((result)=>{
+       res.send(result)
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
+})
+route.get("/event/:uid",function(req,res){
+    UserSchema.getEvent(req.params.uid)
+    .then((result)=>{
+       res.send(result)
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
+})
+
 
 module.exports=route;
