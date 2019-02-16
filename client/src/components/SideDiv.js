@@ -34,10 +34,10 @@ class SlideTask extends React.Component {
   return (
     <div className='side-div-div'>
       <div className='side-div section'>
-        <h3 className='side-title'>Recommended task</h3>
+        <h3 className='side-title'>Tasks</h3>
          <div className="side-task-view">
           {this.state.taskList.map((data)=>{
-            debugger;
+            // debugger;
                       var da=new Date(data.dueDate);
                       var day="";       
                       var del=da=(da.getTime()-new Date().getTime());
@@ -56,13 +56,13 @@ class SlideTask extends React.Component {
                       var task=data.task;
             return (
               <div className="task-main">
-              <div className="task-title">
-               <div>{title}</div>
-               <div>{day}</div>
-              </div>
-              <div className="task-about">
-              {task}
-              </div>
+                <div className="task-title">
+                  <div>{title}</div>
+                </div>
+                <div className="task-about">
+                  {task}
+                </div>
+                <div className="task-time">{day} left</div>
               </div>
 
             )

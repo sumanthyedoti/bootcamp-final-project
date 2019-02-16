@@ -96,7 +96,17 @@
   margin-bottom: 40px;
 }
 
-
+@media (min-width: 500px){
+  .side-div {
+    display: inline-block;
+    width: 26%;
+    min-width: 200px;
+    min-height: 300px;
+    background: #fff;
+    margin-left: 20px;
+    border: 1px solid grey;
+  }
+}
 
 @media (min-width: 768px) {
   .container {
@@ -112,7 +122,8 @@
     margin: auto;
   }
   .side-div-div {
-    min-height: 80vh;
+    /* min-height: 80vh; */
+    /* min-width: 300px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -144,9 +155,8 @@
   .side-div {
     display: inline-block;
     width: 26%;
-    min-width: 240px;
-    min-height: 200px;
-    height: 370px;
+    min-width: 300px;
+    min-height: 300px;
     background: #fff;
     margin-left: 20px;
     border: 1px solid grey;
