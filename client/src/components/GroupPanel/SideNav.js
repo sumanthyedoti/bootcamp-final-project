@@ -15,41 +15,41 @@ export default function SideNav(props) {
     
       <div className='side-nav'>
           <ul>
-            <li>
+            {/* <li>
               <NavLink to="/group-panel"  activeStyle={{color: 'hsl(249, 53%, 46%)'}} className=''>
                 {'Group Profile'}
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink to="/group-panel/tasks" activeStyle={styles.activeNav} className=''>
                 {'Manage tasks'}
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/group-panel/events" activeStyle={styles.activeNav} className=''>
                 {'Manage Events'}
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
 
         <div className='side-nav-div'>
         <ul>
-          <li>
+          {/* <li>
             <NavLink to="/group-panel" onClick={props.showSideNavHandler} activeStyle={{color: 'hsl(249, 53%, 46%)'}} className=''>
               {'Group Profile'}
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/group-panel/tasks" onClick={props.showSideNavHandler}  activeStyle={styles.activeNav} className=''>
               {'Manage tasks'}
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/group-panel/events" onClick={props.showSideNavHandler}  activeStyle={styles.activeNav} className=''>
               {'Manage Events'}
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         </div>
     </>

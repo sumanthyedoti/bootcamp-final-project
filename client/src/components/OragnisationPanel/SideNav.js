@@ -30,11 +30,11 @@ export default function SideNav(props) {
                 {'Manage Groups'}
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/organisation-panel/events" activeStyle={styles.activeNav} className=''>
                 {'Manage Events'}
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
 
@@ -55,11 +55,11 @@ export default function SideNav(props) {
               {'Manage Groups'}
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/organisation-panel/events" onClick={props.showSideNavHandler}  activeStyle={styles.activeNav} className=''>
               {'Manage Events'}
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         </div>
     </>

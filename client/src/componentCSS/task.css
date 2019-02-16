@@ -1,11 +1,21 @@
 .task-main{
-    padding: 3px;
-    margin-top:5px;
-    background: gray;
-    box-shadow: 0px 0px 2px black;
-    font-size: 6px;
+    padding: 10px;
+    /* margin-top:10px; */
+    /* box-shadow: 0px 0px 2px black; */
+    font-size: 16px;
+    color: black;
+    border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: column;
 }
 .task-title{
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+}
+.task-time{
+    align-self: flex-end;
+    color: grey;
+}
+.side-div-div{
+    padding: 4px;
 }
