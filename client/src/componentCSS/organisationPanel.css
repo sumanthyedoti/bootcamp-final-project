@@ -1,26 +1,26 @@
-.org{
+.org {
   display: flex;
 }
-.grp-card{
+.grp-card {
   padding: 20px;
   font-size: 30px;
   background: hsl(0, 0%, 95%);
   margin: 40px;
-  border:1px solid grey;
+  border: 1px solid grey;
   border-radius: 2px;
 }
-.org-groups{
+.org-groups {
   display: flex;
   justify-content: flex-start;
 }
-.org-profile-card{
+.org-profile-card {
   /* width: 100%; */
   margin: 10px 20px;
   background-color: #eee;
   padding: 10px;
   border-radius: 2px;
 }
-.org-title{
+.org-title {
   float: none;
   width: 100%;
   background: hsl(220, 23%, 31%);
@@ -30,60 +30,48 @@
   font-size: 24px;
   border-radius: 2px;
 }
-.org-info{
+.org-info {
   width: 100%;
   padding: 4px;
   margin: auto;
 }
-.org-info-item{
+.org-info-item {
   display: flex;
   padding: 6px;
 }
-.org-info-item p{
+.org-info-item p {
   margin: 2px 18px;
 }
-.etd{
+.etd {
   margin-left: -10px;
   position: relative;
   left: -10px;
   padding-left: 0;
 }
-.grp-card{
+.grp-card {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.grp-card-section{
+.grp-card-section {
   text-align: center;
 }
-.grp-card-sec-title{
+.grp-card-sec-title {
   font-size: 0.5em;
   color: grey;
   margin: 4px;
   /* border-bottom:2px solid grey */
-  
 }
-.grp-card-sec-detail{
+.grp-card-sec-detail {
   margin-top: 10px;
   font-size: 0.6em;
 }
 
-
-
-
-
-
-
-
-
-
-
-@media (min-width: 768px){
-  .org-info{
+@media (min-width: 768px) {
+  .org-info {
     width: 60%;
     padding: 10px;
     /* margin: 0 auto; */
     margin-left: 14%;
   }
-
 }
