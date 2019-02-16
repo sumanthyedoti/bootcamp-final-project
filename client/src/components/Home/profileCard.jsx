@@ -46,17 +46,22 @@ class profileCard extends Component {
           <div className="profile-pic">
             <img src="images/profile2.png" />
           </div>
-          <div className="follower">
-            <div>
-              <Button
-                variant="contained"
-                color="secondary"
-                className={classNames(classes.margin, classes.cssRoot)}
-                style={{ fontWeight: "bolder" }}
-                onClick={this.logout}
-              >
-                Logout
-              </Button>
+          <div className='profile-info'>
+            <div className="profile-name">
+              {JSON.parse(localStorage.getItem('userData')).Name}
+            </div>
+            <div className="follower">
+              <div>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className={classNames(classes.margin, classes.cssRoot)}
+                  style={{ fontWeight: "bolder" }}
+                  onClick={this.logout}
+                >
+                  Logout
+                </Button>
+              </div>
             </div>
           </div>
         </div>

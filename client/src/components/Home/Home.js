@@ -19,7 +19,11 @@ import {
 class Home extends Component {
   componentDidMount(){
     this.props.signin();
-    if(this.props.posts.length===0)this.props.getUserPosts();
+    if(this.props.posts.length===0){
+      setTimeout(()=>{
+        this.props.getUserPosts();
+      },1200);
+    }
   }
   showImageHandler=(e)=>{
     const photo = document.getElementById('post-photos');
