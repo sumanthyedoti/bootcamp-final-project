@@ -33,10 +33,10 @@ export default class Workspace extends Component {
           </div>
           <div className='panel-btns'>
             <Link to="/organisation-panel" className='panel-btn'>
-              {'go to org'}
+              {'Organisation Panel'}
             </Link> <br/>
-            <Link to="/group-panel" className='panel-btn'>
-              {'go to grp'}
+            <Link to="/group-panel/tasks" className='panel-btn'>
+              {'Group Panel'}
             </Link>
           </div>
           <UserGroups userGroups = {this.state.groups} />
