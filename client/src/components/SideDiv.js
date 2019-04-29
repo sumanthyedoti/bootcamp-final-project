@@ -10,13 +10,13 @@ class SlideTask extends React.Component {
   }
   componentDidMount(){
     const user = JSON.parse(localStorage.getItem('user'));
-    debugger;
+    // debugger;
     fetch(`http://localhost:4000/task/${user.username}`)
     .then((res)=>{
        return res.json();
     })
     .then((result)=>{
-      debugger;
+      // debugger;
         console.log(result.success[0].notification);
          var notif=result.success.sort((a,b)=>{
           a = new Date(a.crreateDate);

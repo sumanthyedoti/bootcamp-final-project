@@ -10,6 +10,6 @@ const cheifReducer =  combineReducers({
   reducedOrganisation: organisationReducer
 })
 
-const store = createStore(cheifReducer, compose(applyMiddleware(thunk),   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+const store = createStore(cheifReducer, compose(applyMiddleware(thunk)));
 
 export default store;

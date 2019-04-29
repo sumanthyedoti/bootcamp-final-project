@@ -27,7 +27,7 @@ class Login extends Component {
     this.setState(state => ({
       newState,
       toggle: "signin",
-      isSignedIn:!state.isSignedIn
+      // isSignedIn:!state.isSignedIn
     }));
   };
   onClickSignup = () => {
@@ -84,9 +84,7 @@ class Login extends Component {
     
          <div className="login-text">
          <h1>
-           Create , Develop , form and Collabrate.<br />
-           <br />
-           Manage your people in the    way you want! 
+           Reach out to the kind of you!
          </h1>
          </div>
        <div className="login-main">  <div className="login">

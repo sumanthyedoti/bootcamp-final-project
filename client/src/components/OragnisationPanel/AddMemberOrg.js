@@ -52,12 +52,12 @@ class AddMemberOrg extends React.Component{
                 return res.json()
             })
             .then((data)=>{
-                debugger;
+                // debugger;
                 console.log(data);
                 this.setState({members:data.success});
             })
             .catch((err)=>{
-                debugger
+                // debugger
                 console.log(err);
             })
          }

@@ -65,6 +65,7 @@ class AddNewGroup extends React.Component{
             var mt1='error'
             this.props.enqueueSnackbar('Adding new group failed!', { mt1 });
           })
+          
     }
     render(){
      let groupsList = null
